@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Net;
+using System.IO;
+using System.Timers;
+
+using System.Drawing.Drawing2D;
+using System.Globalization;
+
+using BrightIdeasSoftware;
+
+namespace WindowsFormsApplication1
+{
+
+    public partial class channel_list : Torbo.DockableForm
+    {
+
+        public int shadedheight;
+        public bool shaded = false;
+
+        public channel_list()
+        {
+
+        }
+
+        const int WM_NCHITTEST = 0x84;
+        const int HTCLIENT = 0x1;
+        const int HTCAPTION = 0x2;
+        private const int WM_NCLBUTTONDBLCLK = 0xA3;
+
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    base.WndProc(ref m);
+                    if (m.Result.ToInt32() == HTCLIENT) m.Result = new IntPtr(HTCAPTION);
+                    break;
+                case WM_NCLBUTTONDBLCLK:
+                    if (shaded == false)
+                    {
+                        shadedheight = Height;
+                        resize.Visible = false;
+                        Height = 14;
+                        shaded = true;
+                    }
+                    else
+                    {
+                        Height = shadedheight;
+                        resize.Visible = true;
+                        shaded = false;
+                    }
+                    m.Msg = 0; //Discard double-click
+                    break;
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
+
+
+
+class CustomProfessionalColors : ProfessionalColorTable
+{
+    /*
+    public override Color MenuItemSelected
+    { get { return Color.FromArgb(64, 64, 64); } }
+    public override Color MenuBorder
+    { get { return Color.FromArgb(48, 48, 48); } }
+    public override Color MenuItemBorder
+    { get { return Color.FromArgb(64, 64, 64); } }
+    */
+    public override Color MenuItemSelected
+    { get { return Color.FromArgb(64, 64, 64); } }
+    public override Color MenuBorder
+    { get { return Color.FromArgb(64, 64, 64); } }
+    public override Color MenuItemBorder
+    { get { return Color.FromArgb(48,48,48); } }
+}
+
+    }
+
+}
+
+
+
+
+
+
+
+
