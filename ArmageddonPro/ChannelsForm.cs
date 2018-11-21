@@ -8,7 +8,7 @@ using BrightIdeasSoftware;
 
 namespace WindowsFormsApplication1
 {
-    public partial class ChanlistForm : Torbo.DockableForm
+    public partial class ChannelsForm : Torbo.DockableForm
     {
         public int shadedheight;
         public bool shaded = false;
@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         private ChatForm frmMain;
         private ArrayList users;
 
-        public ChanlistForm(ChatForm frmform, ArrayList frmusers)
+        public ChannelsForm(ChatForm frmform, ArrayList frmusers)
         {
             InitializeComponent();
 

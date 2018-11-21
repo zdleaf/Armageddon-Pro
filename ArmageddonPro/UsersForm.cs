@@ -6,14 +6,14 @@ using System.Timers;
 
 namespace WindowsFormsApplication1
 {
-    public partial class UserlistForm : Torbo.DockableForm
+    public partial class UsersForm : Torbo.DockableForm
     {
 
         public int shadedheight;
         public bool shaded = false;
         private ChatForm frmMain;
 
-        public UserlistForm(ChatForm frmform, ArrayList frmchannels)
+        public UsersForm(ChatForm frmform, ArrayList frmchannels)
         {
             InitializeComponent();
             frmMain = frmform;

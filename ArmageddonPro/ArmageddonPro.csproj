@@ -67,23 +67,23 @@
     <Compile Include="ChatForm.Designer.cs">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserlistForm.cs">
+    <Compile Include="UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserlistForm.Designer.cs">
-      <DependentUpon>UserlistForm.cs</DependentUpon>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GamelistForm.cs">
+    <Compile Include="GamesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GamelistForm.Designer.cs">
-      <DependentUpon>GamelistForm.cs</DependentUpon>
+    <Compile Include="GamesForm.Designer.cs">
+      <DependentUpon>GamesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChanlistForm.cs">
+    <Compile Include="ChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChanlistForm.Designer.cs">
-      <DependentUpon>ChanlistForm.cs</DependentUpon>
+    <Compile Include="ChannelsForm.Designer.cs">
+      <DependentUpon>ChannelsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,14 +91,14 @@
     <EmbeddedResource Include="ChatForm.resx">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserlistForm.resx">
-      <DependentUpon>UserlistForm.cs</DependentUpon>
+    <EmbeddedResource Include="UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GamelistForm.resx">
-      <DependentUpon>GamelistForm.cs</DependentUpon>
+    <EmbeddedResource Include="GamesForm.resx">
+      <DependentUpon>GamesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChanlistForm.resx">
-      <DependentUpon>ChanlistForm.cs</DependentUpon>
+    <EmbeddedResource Include="ChannelsForm.resx">
+      <DependentUpon>ChannelsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

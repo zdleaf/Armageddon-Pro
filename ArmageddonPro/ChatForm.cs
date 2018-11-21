@@ -84,15 +84,15 @@ namespace WindowsFormsApplication1
         public ArrayList users = new ArrayList();
         public ArrayList channels = new ArrayList();
 
-        private ChanlistForm frmChanlist;
-        private GamelistForm frmGamelist;
-        private UserlistForm frmUserlist;
+        private ChannelsForm frmChanlist;
+        private GamesForm frmGamelist;
+        private UsersForm frmUserlist;
 
         public ChatForm()
         {
-            frmChanlist = new ChanlistForm(this, users);
-            frmGamelist = new GamelistForm(this);
-            frmUserlist = new UserlistForm(this, channels);
+            frmChanlist = new ChannelsForm(this, users);
+            frmGamelist = new GamesForm(this);
+            frmUserlist = new UsersForm(this, channels);
 
             ConnectForm(frmChanlist);
             ConnectForm(frmGamelist);

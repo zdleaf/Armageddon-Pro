@@ -295,7 +295,7 @@
             this.Controls.Add(this.txtMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.Text = "ArmaPro";
+            this.Text = "ArmageddonPro";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.shade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resize)).EndInit();

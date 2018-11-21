@@ -13,7 +13,7 @@ using BrightIdeasSoftware;
 namespace WindowsFormsApplication1
 {
 
-    public partial class GamelistForm : Torbo.DockableForm
+    public partial class GamesForm : Torbo.DockableForm
     {
 
         public int shadedheight;
@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
         public game storedgame;
         private ChatForm frmMain;
 
-        public GamelistForm(ChatForm frmform)
+        public GamesForm(ChatForm frmform)
         {
             frmMain = frmform;
             InitializeComponent();
