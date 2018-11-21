@@ -6,17 +6,17 @@ using System.Timers;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form3 : Torbo.DockableForm
+    public partial class UserlistForm : Torbo.DockableForm
     {
 
         public int shadedheight;
         public bool shaded = false;
-        private Form1 form1;
+        private ChatForm frmMain;
 
-        public Form3(Form1 frmform, ArrayList frmchannels)
+        public UserlistForm(ChatForm frmform, ArrayList frmchannels)
         {
             InitializeComponent();
-            form1 = frmform;
+            frmMain = frmform;
 
             channelName.FreeSpaceProportion = 11;
             channelUsercount.FreeSpaceProportion = 2;
@@ -37,9 +37,9 @@ namespace WindowsFormsApplication1
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if (form1.Connected != false && this.Visible == true)
+            if (frmMain.Connected != false && this.Visible == true)
             {
-                form1.rawsend("LIST");
+                frmMain.rawsend("LIST");
             }
         }
 
@@ -108,15 +108,15 @@ namespace WindowsFormsApplication1
         private void channelList_doubleclick(object sender, EventArgs e)
         {
             channel chan = (channel)channelList.SelectedObject;
-            Control ctrl = form1.tabexists(chan.channelName);
+            Control ctrl = frmMain.tabexists(chan.channelName);
             if (ctrl == null)
             {
-                form1.newtab(chan.channelName, "", false, false);
-                form1.rawsend("JOIN " + chan.channelName);
+                frmMain.newtab(chan.channelName, "", false, false);
+                frmMain.rawsend("JOIN " + chan.channelName);
             }
             else
             {
-                form1.focustab(ctrl);
+                frmMain.focustab(ctrl);
             }
             
         }

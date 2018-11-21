@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form4
+    partial class GamelistForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GamelistForm));
             this.flagsList = new System.Windows.Forms.ImageList(this.components);
             this.padlock = new System.Windows.Forms.ImageList(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);

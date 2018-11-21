@@ -8,26 +8,26 @@ using BrightIdeasSoftware;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form5 : Torbo.DockableForm
+    public partial class ChanlistForm : Torbo.DockableForm
     {
         public int shadedheight;
         public bool shaded = false;
 
-        private Form1 form1;
+        private ChatForm frmMain;
         private ArrayList users;
-        public Form5(Form1 frmform, ArrayList frmusers)
+
+        public ChanlistForm(ChatForm frmform, ArrayList frmusers)
         {
             InitializeComponent();
 
             this.ShowInTaskbar = false;
 
-            form1 = frmform;
+            frmMain = frmform;
             users = frmusers;
 
             DoubleBuffered = true;
             Opacity = 1;
 
-            
             object[] flags = new object[128];
             for (int i = 0, j = 0; i <= 126; i += 2, j++)
             {
@@ -117,14 +117,14 @@ namespace WindowsFormsApplication1
             if (userlist.SelectedIndex != -1)
             {
                 user row = (user)userlist.SelectedObject;
-                Control ctrl = form1.tabexists(row.username.ToString());
+                Control ctrl = frmMain.tabexists(row.username.ToString());
                 if (ctrl == null)
                 {
-                    form1.newtab(row.username.ToString(), null, true, false);
+                    frmMain.newtab(row.username.ToString(), null, true, false);
                 }
                 else
                 {
-                    form1.focustab(ctrl);
+                    frmMain.focustab(ctrl);
                 }
 
             }

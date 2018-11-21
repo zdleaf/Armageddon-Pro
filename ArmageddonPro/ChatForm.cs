@@ -1,24 +1,21 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
-using Microsoft.Win32;
-
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-
-using System.IO;
-using System.Threading;
-
 using System.Runtime.InteropServices; //for DllImport
+using System.Threading;
+using System.Windows.Forms;
 
 
 namespace WindowsFormsApplication1
 {
 
 
-    public partial class Form1 : Torbo.DockableForm
+    public partial class ChatForm : Torbo.DockableForm
     {
         // Stop autoscroll in textbox when scrollbar is not at bottom
         [DllImport("user32.dll")]
@@ -87,21 +84,21 @@ namespace WindowsFormsApplication1
         public ArrayList users = new ArrayList();
         public ArrayList channels = new ArrayList();
 
-        private Form5 form5;
-        private Form4 form4;
-        private Form3 form3;
+        private ChanlistForm frmChanlist;
+        private GamelistForm frmGamelist;
+        private UserlistForm frmUserlist;
 
-        public Form1()
+        public ChatForm()
         {
-            form5 = new Form5(this, users);
-            form4 = new Form4(this);
-            form3 = new Form3(this, channels);
+            frmChanlist = new ChanlistForm(this, users);
+            frmGamelist = new GamelistForm(this);
+            frmUserlist = new UserlistForm(this, channels);
 
-            ConnectForm(form5);
-            ConnectForm(form4);
-            ConnectForm(form3);
-            form4.ConnectForm(form5);
-            form3.ConnectForm(form4);
+            ConnectForm(frmChanlist);
+            ConnectForm(frmGamelist);
+            ConnectForm(frmUserlist);
+            frmGamelist.ConnectForm(frmChanlist);
+            frmUserlist.ConnectForm(frmGamelist);
 
             // On application exit, don't forget to disconnect first
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
@@ -161,9 +158,9 @@ namespace WindowsFormsApplication1
                 case WM_ACTIVATEAPP:
                     if (m.WParam != IntPtr.Zero)
                     {
-                        form3.BringToFront();
-                        form5.BringToFront();
-                        form4.BringToFront();
+                        frmUserlist.BringToFront();
+                        frmChanlist.BringToFront();
+                        frmGamelist.BringToFront();
                     }
                     else base.WndProc(ref m);
                     break;
@@ -229,20 +226,20 @@ namespace WindowsFormsApplication1
                 key.SetValue("height", shadedheight);
             }
 
-            key.SetValue("userlistX", form5.Location.X);
-            key.SetValue("userlistY", form5.Location.Y);
-            key.SetValue("userlistwidth", form5.Size.Width);
-            key.SetValue("userlistheight", form5.Size.Height);
+            key.SetValue("userlistX", frmChanlist.Location.X);
+            key.SetValue("userlistY", frmChanlist.Location.Y);
+            key.SetValue("userlistwidth", frmChanlist.Size.Width);
+            key.SetValue("userlistheight", frmChanlist.Size.Height);
 
-            key.SetValue("gamelistX", form4.Location.X);
-            key.SetValue("gamelistY", form4.Location.Y);
-            key.SetValue("gamelistwidth", form4.Size.Width);
-            key.SetValue("gamelistheight", form4.Size.Height);
+            key.SetValue("gamelistX", frmGamelist.Location.X);
+            key.SetValue("gamelistY", frmGamelist.Location.Y);
+            key.SetValue("gamelistwidth", frmGamelist.Size.Width);
+            key.SetValue("gamelistheight", frmGamelist.Size.Height);
 
-            key.SetValue("chanlistX", form3.Location.X);
-            key.SetValue("chanlistY", form3.Location.Y);
-            key.SetValue("chanlistwidth", form3.Size.Width);
-            key.SetValue("chanlistheight", form3.Size.Height);
+            key.SetValue("chanlistX", frmUserlist.Location.X);
+            key.SetValue("chanlistY", frmUserlist.Location.Y);
+            key.SetValue("chanlistwidth", frmUserlist.Size.Width);
+            key.SetValue("chanlistheight", frmUserlist.Size.Height);
 
             if (chathidden == 1)
             {
@@ -448,7 +445,7 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                form5.userlist.SetObjects(users);
+                frmChanlist.userlist.SetObjects(users);
 
                 Control[] ctrl = this.Controls.Find("tb" + tabname, true);
                 if (ctrl.Length != 0)
@@ -479,7 +476,7 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                form5.userlist.SetObjects(users);
+                frmChanlist.userlist.SetObjects(users);
 
                 Control[] ctrl = this.Controls.Find("tb" + tabname, true);
                 if (ctrl.Length != 0)
@@ -580,7 +577,7 @@ namespace WindowsFormsApplication1
 
                 }
 
-                form5.userlist.SetObjects(users);
+                frmChanlist.userlist.SetObjects(users);
 
             }
 
@@ -622,12 +619,12 @@ namespace WindowsFormsApplication1
                 if (exists == false)
                 {
                     channels.Add(chan);
-                    form3.channelList.SetObjects(channels);
+                    frmUserlist.channelList.SetObjects(channels);
                 }
                 else
                 {
                     chan.channelUsercount = Int32.Parse(channellist[4]);
-                    form3.channelList.RefreshObject(chan);
+                    frmUserlist.channelList.RefreshObject(chan);
                 }
 
 
@@ -751,7 +748,7 @@ namespace WindowsFormsApplication1
             srReceiver.Close();
             tcpServer.Close();
             // Clear userlist
-            form5.userlist.SetObjects(null);
+            frmChanlist.userlist.SetObjects(null);
         }
 
 
@@ -804,29 +801,29 @@ namespace WindowsFormsApplication1
             // FLAGS
             this.flags.ItemHeight = 18;
             string[] flagsstr;
-            flagsstr = new string[form5.flagsList.Images.Count];
-            for (int i = 0; i < form5.flagsList.Images.Count; i++)
+            flagsstr = new string[frmChanlist.flagsList.Images.Count];
+            for (int i = 0; i < frmChanlist.flagsList.Images.Count; i++)
             {
-                this.flags.Items.Add(form5.flagsList.Images[i]);
+                this.flags.Items.Add(frmChanlist.flagsList.Images[i]);
 
             }
             this.flags.DropDownStyle = ComboBoxStyle.DropDownList;
             this.flags.DrawMode = DrawMode.OwnerDrawVariable;
-            this.flags.Width = this.form5.flagsList.ImageSize.Width + 24;
+            this.flags.Width = this.frmChanlist.flagsList.ImageSize.Width + 24;
 
 
             // RANKS
             this.rank.ItemHeight = 18;
             string[] ranks;
-            ranks = new string[form5.rankList.Images.Count];
-            for (int i = 0; i < form5.rankList.Images.Count; i++)
+            ranks = new string[frmChanlist.rankList.Images.Count];
+            for (int i = 0; i < frmChanlist.rankList.Images.Count; i++)
             {
-                this.rank.Items.Add(form5.rankList.Images[i]);
+                this.rank.Items.Add(frmChanlist.rankList.Images[i]);
 
             }
             this.rank.DropDownStyle = ComboBoxStyle.DropDownList;
             this.rank.DrawMode = DrawMode.OwnerDrawVariable;
-            this.rank.Width = this.form5.rankList.ImageSize.Width + 20;
+            this.rank.Width = this.frmChanlist.rankList.ImageSize.Width + 20;
 
             // LOAD SETTINGS FROM REGISTRY
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\zincldn");
@@ -847,51 +844,51 @@ namespace WindowsFormsApplication1
 
 
             if (key.GetValue("userlistX") != null)
-            { form5.Location = new Point((int)key.GetValue("userlistX"), (int)key.GetValue("userlistY")); }
+            { frmChanlist.Location = new Point((int)key.GetValue("userlistX"), (int)key.GetValue("userlistY")); }
 
             if (key.GetValue("userlistwidth") != null)
             {
-                form5.Size = new Size((int)key.GetValue("userlistwidth"), (int)key.GetValue("userlistheight"));
+                frmChanlist.Size = new Size((int)key.GetValue("userlistwidth"), (int)key.GetValue("userlistheight"));
             }
 
 
             if (key.GetValue("gamelistX") != null)
-            { form4.Location = new Point((int)key.GetValue("gamelistX"), (int)key.GetValue("gamelistY")); }
+            { frmGamelist.Location = new Point((int)key.GetValue("gamelistX"), (int)key.GetValue("gamelistY")); }
 
             if (key.GetValue("gamelistwidth") != null)
             {
-                form4.Size = new Size((int)key.GetValue("gamelistwidth"), (int)key.GetValue("gamelistheight"));
+                frmGamelist.Size = new Size((int)key.GetValue("gamelistwidth"), (int)key.GetValue("gamelistheight"));
             }
 
             if (key.GetValue("chanlistX") != null)
-            { form3.Location = new Point((int)key.GetValue("chanlistX"), (int)key.GetValue("chanlistY")); }
+            { frmUserlist.Location = new Point((int)key.GetValue("chanlistX"), (int)key.GetValue("chanlistY")); }
 
             if (key.GetValue("chanlistwidth") != null)
             {
-                form3.Size = new Size((int)key.GetValue("chanlistwidth"), (int)key.GetValue("chanlistheight"));
+                frmUserlist.Size = new Size((int)key.GetValue("chanlistwidth"), (int)key.GetValue("chanlistheight"));
             }
 
             if ((int)key.GetValue("chathidden") == 1)
             {
-                form4.Show();
-                form4.checkBox2.Checked = true;
+                frmGamelist.Show();
+                frmGamelist.checkBox2.Checked = true;
                 chathidden = 1;
             }
             else 
             {
-                form5.Show();
-                form4.Show();
+                frmChanlist.Show();
+                frmGamelist.Show();
                 // form3.Show();
                 chathidden = 0;
             }
 
             if ((int)key.GetValue("alwaysontop") == 1)
             {
-                form4.checkBox1.Checked = true;
+                frmGamelist.checkBox1.Checked = true;
             }
             else 
             {
-                form4.checkBox1.Checked = false;
+                frmGamelist.checkBox1.Checked = false;
             }
 
             if (key.GetValue("user") != null)
@@ -910,7 +907,7 @@ namespace WindowsFormsApplication1
             if (e.Index != -1)
             {
 
-                e.Graphics.DrawImage(form5.flagsList.Images[e.Index],
+                e.Graphics.DrawImage(frmChanlist.flagsList.Images[e.Index],
                 e.Bounds.Left, e.Bounds.Top);
             }
 
@@ -921,7 +918,7 @@ namespace WindowsFormsApplication1
             if (e.Index != -1)
             {
 
-                e.Graphics.DrawImage(form5.rankList.Images[e.Index],
+                e.Graphics.DrawImage(frmChanlist.rankList.Images[e.Index],
                 e.Bounds.Left, e.Bounds.Top);
             }
         }
@@ -998,10 +995,10 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (form3.Visible == true)
-                { form3.Visible = false; }
+            if (frmUserlist.Visible == true)
+                { frmUserlist.Visible = false; }
             else
-                { form3.Visible = true; }
+                { frmUserlist.Visible = true; }
                 
         }
 
@@ -1009,19 +1006,19 @@ namespace WindowsFormsApplication1
         {
             chathidden = 0;
             this.Show();
-            form3.Show();
-            form3.Visible = false;
-            form4.Show();
-            form5.Show();
+            frmUserlist.Show();
+            frmUserlist.Visible = false;
+            frmGamelist.Show();
+            frmChanlist.Show();
         }
 
         public void hidechat()
         {
             chathidden = 1;
-            form4.Show();
+            frmGamelist.Show();
             this.Hide();
-            form3.Hide();
-            form5.Hide();
+            frmUserlist.Hide();
+            frmChanlist.Hide();
         }
 
         // Hide main window on Load if chathidden registry setting set - unable to do this on Load so needs to be overridden afterwards

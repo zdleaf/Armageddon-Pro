@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form5
+    partial class ChanlistForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChanlistForm));
             this.rankList = new System.Windows.Forms.ImageList(this.components);
             this.flagsList = new System.Windows.Forms.ImageList(this.components);
             this.shade = new System.Windows.Forms.PictureBox();

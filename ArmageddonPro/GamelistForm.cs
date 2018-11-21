@@ -13,7 +13,7 @@ using BrightIdeasSoftware;
 namespace WindowsFormsApplication1
 {
 
-    public partial class Form4 : Torbo.DockableForm
+    public partial class GamelistForm : Torbo.DockableForm
     {
 
         public int shadedheight;
@@ -34,11 +34,11 @@ namespace WindowsFormsApplication1
         }
 
         public game storedgame;
+        private ChatForm frmMain;
 
-        private Form1 form1;
-        public Form4(Form1 frmform)
+        public GamelistForm(ChatForm frmform)
         {
-            form1 = frmform;
+            frmMain = frmform;
             InitializeComponent();
 
             this.ShowInTaskbar = false;
@@ -600,12 +600,12 @@ namespace WindowsFormsApplication1
             if (checkBox1.Checked == true)
             {
                 this.TopMost = true;
-                form1.alwaysontop = 1;
+                frmMain.alwaysontop = 1;
             }
             else
             {
                 this.TopMost = false;
-                form1.alwaysontop = 0;
+                frmMain.alwaysontop = 0;
             }
         }
 
@@ -613,11 +613,11 @@ namespace WindowsFormsApplication1
         {
             if (checkBox2.Checked == true)
             {
-                form1.hidechat();
+                frmMain.hidechat();
             }
             else
             {
-                form1.showchat();
+                frmMain.showchat();
             }
         }
 
