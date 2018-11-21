@@ -162,11 +162,23 @@ namespace WindowsFormsApplication1
 
                         */
 
-                        gamename = array[1];
+                        // If game name starts with ß, this signifies game was hosted with a beta version of the game - now irrelevant
+                        if (array[1][0].Equals('ß'))
+                        {
+                            // Remove the unrequired ß symbol
+                            gamename = array[1].Substring(1, array[1].Length - 1);
+                            // gamename = "ß" + gamename;
+                        }
+                        else
+                        {
+                            gamename = array[1];
+                        }
+                        
                         game game = new game();
                         game.flag = int.Parse(array[4]);
                         game.padlock = int.Parse(array[6]);
-                        game.gamename = gamename.Replace('�', 'ß');
+                        // Replace() the Unicode replacement character with a space
+                        game.gamename = gamename.Replace('�', ' ');
                         game.host = array[2];
                         game.ip = array[3];
                         game.id = array[7];

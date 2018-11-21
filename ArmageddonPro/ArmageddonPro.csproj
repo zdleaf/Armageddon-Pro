@@ -79,11 +79,11 @@
     <Compile Include="GamesForm.Designer.cs">
       <DependentUpon>GamesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChannelsForm.cs">
+    <Compile Include="ChannelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChannelsForm.Designer.cs">
-      <DependentUpon>ChannelsForm.cs</DependentUpon>
+    <Compile Include="ChannelForm.Designer.cs">
+      <DependentUpon>ChannelForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,8 +97,8 @@
     <EmbeddedResource Include="GamesForm.resx">
       <DependentUpon>GamesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChannelsForm.resx">
-      <DependentUpon>ChannelsForm.cs</DependentUpon>
+    <EmbeddedResource Include="ChannelForm.resx">
+      <DependentUpon>ChannelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

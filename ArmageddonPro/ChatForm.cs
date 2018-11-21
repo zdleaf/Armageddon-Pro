@@ -84,13 +84,13 @@ namespace WindowsFormsApplication1
         public ArrayList users = new ArrayList();
         public ArrayList channels = new ArrayList();
 
-        private ChannelsForm frmChanlist;
+        private ChannelForm frmChanlist;
         private GamesForm frmGamelist;
         private UsersForm frmUserlist;
 
         public ChatForm()
         {
-            frmChanlist = new ChannelsForm(this, users);
+            frmChanlist = new ChannelForm(this, users);
             frmGamelist = new GamesForm(this);
             frmUserlist = new UsersForm(this, channels);
 
