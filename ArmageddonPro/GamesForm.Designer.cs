@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace ArmageddonPro
 {
     partial class GamesForm
     {
@@ -566,7 +566,7 @@
             // settings
             // 
             this.settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.settings.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.settings2;
+            this.settings.BackgroundImage = global::ArmageddonPro.Properties.Resources.settings2;
             this.settings.InitialImage = null;
             this.settings.Location = new System.Drawing.Point(36, 294);
             this.settings.Name = "settings";
@@ -580,7 +580,7 @@
             // host_btn
             // 
             this.host_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.host_btn.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.host2;
+            this.host_btn.BackgroundImage = global::ArmageddonPro.Properties.Resources.host2;
             this.host_btn.InitialImage = null;
             this.host_btn.Location = new System.Drawing.Point(20, 294);
             this.host_btn.Name = "host_btn";
@@ -681,7 +681,7 @@
             this.colorDialog7.AnyColor = true;
             this.colorDialog7.FullOpen = true;
             // 
-            // Form4
+            // GamesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -697,7 +697,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form4";
+            this.Name = "GamesForm";
+            this.Text = "Armageddon Pro";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form4_Paint);
             this.Resize += new System.EventHandler(this.Form4_Resize);

@@ -5,8 +5,7 @@ using System.Collections;
 
 using BrightIdeasSoftware;
 
-
-namespace WindowsFormsApplication1
+namespace ArmageddonPro
 {
     public partial class ChannelForm : Torbo.DockableForm
     {

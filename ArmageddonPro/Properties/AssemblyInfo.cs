@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsFormsApplication1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Armageddon-Pro")]
+[assembly: AssemblyDescription("An alternative online front end for Worms Armageddon")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Militia corp.")]
-[assembly: AssemblyProduct("WindowsFormsApplication1")]
-[assembly: AssemblyCopyright("Copyright © Militia corp. 2010")]
+[assembly: AssemblyCompany("Zinc Ldn")]
+[assembly: AssemblyProduct("Armageddon-Pro")]
+[assembly: AssemblyCopyright("Zinc Ldn 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

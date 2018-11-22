@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Timers;
 
-namespace WindowsFormsApplication1
+namespace ArmageddonPro
 {
     public partial class UsersForm : Torbo.DockableForm
     {
@@ -21,7 +21,6 @@ namespace WindowsFormsApplication1
             channelName.FreeSpaceProportion = 11;
             channelUsercount.FreeSpaceProportion = 2;
             channelTopic.FreeSpaceProportion = 30;
-
             channelUsercount.MinimumWidth = 20;
 
             // User a system timer to refresh channels

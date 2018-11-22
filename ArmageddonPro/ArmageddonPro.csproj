@@ -8,8 +8,8 @@
     <ProjectGuid>{FF72E433-D239-4A90-91BE-39607E654DC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication1</RootNamespace>
-    <AssemblyName>wasnoop</AssemblyName>
+    <RootNamespace>ArmageddonPro</RootNamespace>
+    <AssemblyName>ArmageddonPro</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

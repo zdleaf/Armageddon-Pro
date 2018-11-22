@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1.Properties {
+﻿namespace ArmageddonPro.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

@@ -11,7 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 
-namespace WindowsFormsApplication1
+namespace ArmageddonPro
 {
 
 
@@ -90,6 +90,9 @@ namespace WindowsFormsApplication1
 
         public ChatForm()
         {
+
+            this.ShowInTaskbar = false;
+
             frmChanlist = new ChannelForm(this, users);
             frmGamelist = new GamesForm(this);
             frmUserlist = new UsersForm(this, channels);

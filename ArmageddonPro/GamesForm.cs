@@ -10,7 +10,7 @@ using Microsoft.Win32;
 
 using BrightIdeasSoftware;
 
-namespace WindowsFormsApplication1
+namespace ArmageddonPro
 {
 
     public partial class GamesForm : Torbo.DockableForm
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
             frmMain = frmform;
             InitializeComponent();
 
-            this.ShowInTaskbar = false;
+            this.ShowInTaskbar = true;
 
             chanlist.Add("AnythingGoes");
             chanlist.Add("PartyTime");
