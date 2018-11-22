@@ -1,6 +1,6 @@
 ﻿namespace ArmageddonPro
 {
-    partial class ChatForm
+    partial class Chat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chat));
             this.shade = new System.Windows.Forms.PictureBox();
             this.resize = new System.Windows.Forms.PictureBox();
             this.tabControlEX1 = new Dotnetrix.Controls.TabControlEX();

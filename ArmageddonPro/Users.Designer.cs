@@ -1,6 +1,6 @@
 ﻿namespace ArmageddonPro
 {
-    partial class ChannelForm
+    partial class Users
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChannelForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.rankList = new System.Windows.Forms.ImageList(this.components);
             this.flagsList = new System.Windows.Forms.ImageList(this.components);
             this.shade = new System.Windows.Forms.PictureBox();
@@ -216,7 +216,7 @@
             this.username.FillsFreeSpace = true;
             this.username.Width = 1;
             // 
-            // Form5
+            // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,7 +229,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form5";
+            this.Name = "Users";
             this.Text = "Form5";
             ((System.ComponentModel.ISupportInitialize)(this.shade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resize)).EndInit();

@@ -7,15 +7,15 @@ using BrightIdeasSoftware;
 
 namespace ArmageddonPro
 {
-    public partial class ChannelForm : Torbo.DockableForm
+    public partial class Users : Torbo.DockableForm
     {
         public int shadedheight;
         public bool shaded = false;
 
-        private ChatForm frmMain;
+        private Chat frmMain;
         private ArrayList users;
 
-        public ChannelForm(ChatForm frmform, ArrayList frmusers)
+        public Users(Chat frmform, ArrayList frmusers)
         {
             InitializeComponent();
 

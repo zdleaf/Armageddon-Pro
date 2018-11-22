@@ -1,6 +1,6 @@
 ﻿namespace ArmageddonPro
 {
-    partial class GamesForm
+    partial class Games
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GamesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Games));
             this.flagsList = new System.Windows.Forms.ImageList(this.components);
             this.padlock = new System.Windows.Forms.ImageList(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);

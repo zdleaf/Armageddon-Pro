@@ -15,7 +15,7 @@ namespace ArmageddonPro
 {
 
 
-    public partial class ChatForm : Torbo.DockableForm
+    public partial class Chat : Torbo.DockableForm
     {
         // Stop autoscroll in textbox when scrollbar is not at bottom
         [DllImport("user32.dll")]
@@ -84,18 +84,18 @@ namespace ArmageddonPro
         public ArrayList users = new ArrayList();
         public ArrayList channels = new ArrayList();
 
-        private ChannelForm frmChanlist;
-        private GamesForm frmGamelist;
-        private UsersForm frmUserlist;
+        private Users frmChanlist;
+        private Games frmGamelist;
+        private Channels frmUserlist;
 
-        public ChatForm()
+        public Chat()
         {
 
-            this.ShowInTaskbar = false;
+            // this.ShowInTaskbar = false;
 
-            frmChanlist = new ChannelForm(this, users);
-            frmGamelist = new GamesForm(this);
-            frmUserlist = new UsersForm(this, channels);
+            frmChanlist = new Users(this, users);
+            frmGamelist = new Games(this);
+            frmUserlist = new Channels(this, channels);
 
             ConnectForm(frmChanlist);
             ConnectForm(frmGamelist);

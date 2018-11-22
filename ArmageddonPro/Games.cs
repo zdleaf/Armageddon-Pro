@@ -13,7 +13,7 @@ using BrightIdeasSoftware;
 namespace ArmageddonPro
 {
 
-    public partial class GamesForm : Torbo.DockableForm
+    public partial class Games : Torbo.DockableForm
     {
 
         public int shadedheight;
@@ -34,14 +34,14 @@ namespace ArmageddonPro
         }
 
         public game storedgame;
-        private ChatForm frmMain;
+        private Chat frmMain;
 
-        public GamesForm(ChatForm frmform)
+        public Games(Chat frmform)
         {
             frmMain = frmform;
             InitializeComponent();
 
-            this.ShowInTaskbar = true;
+            this.ShowInTaskbar = false;
 
             chanlist.Add("AnythingGoes");
             chanlist.Add("PartyTime");

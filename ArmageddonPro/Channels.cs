@@ -6,14 +6,14 @@ using System.Timers;
 
 namespace ArmageddonPro
 {
-    public partial class UsersForm : Torbo.DockableForm
+    public partial class Channels : Torbo.DockableForm
     {
 
         public int shadedheight;
         public bool shaded = false;
-        private ChatForm frmMain;
+        private Chat frmMain;
 
-        public UsersForm(ChatForm frmform, ArrayList frmchannels)
+        public Channels(Chat frmform, ArrayList frmchannels)
         {
             InitializeComponent();
             frmMain = frmform;

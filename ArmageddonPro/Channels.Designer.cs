@@ -1,6 +1,6 @@
 ﻿namespace ArmageddonPro
 {
-    partial class UsersForm
+    partial class Channels
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Channels));
             this.panel1 = new System.Windows.Forms.Panel();
             this.channelList = new BrightIdeasSoftware.ObjectListView();
             this.channelName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -47,6 +47,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.channelList);
             this.panel1.Location = new System.Drawing.Point(0, 12);
             this.panel1.Name = "panel1";
@@ -123,7 +124,7 @@
             this.shade.TabIndex = 16;
             this.shade.TabStop = false;
             // 
-            // Form3
+            // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +134,7 @@
             this.Controls.Add(this.resize);
             this.Controls.Add(this.shade);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form3";
+            this.Name = "Users";
             this.Text = "Form3";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.channelList)).EndInit();
