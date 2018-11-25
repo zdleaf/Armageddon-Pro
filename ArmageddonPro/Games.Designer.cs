@@ -507,6 +507,7 @@
             this.gamelist.ForeColor = System.Drawing.Color.White;
             this.gamelist.FullRowSelect = true;
             this.gamelist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.gamelist.HideSelection = false;
             this.gamelist.HighlightBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.gamelist.Location = new System.Drawing.Point(0, 0);
             this.gamelist.Name = "gamelist";
@@ -681,7 +682,7 @@
             this.colorDialog7.AnyColor = true;
             this.colorDialog7.FullOpen = true;
             // 
-            // GamesForm
+            // Games
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -697,7 +698,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "GamesForm";
+            this.Name = "Games";
             this.Text = "Armageddon Pro";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form4_Paint);

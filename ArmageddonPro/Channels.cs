@@ -11,12 +11,12 @@ namespace ArmageddonPro
 
         public int shadedheight;
         public bool shaded = false;
-        private Chat frmMain;
+        private Chat frmChat;
 
         public Channels(Chat frmform, ArrayList frmchannels)
         {
             InitializeComponent();
-            frmMain = frmform;
+            frmChat = frmform;
 
             channelName.FreeSpaceProportion = 11;
             channelUsercount.FreeSpaceProportion = 2;
@@ -36,9 +36,9 @@ namespace ArmageddonPro
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if (frmMain.Connected != false && this.Visible == true)
+            if (frmChat.Connected != false && this.Visible == true)
             {
-                frmMain.rawsend("LIST");
+                frmChat.rawsend("LIST");
             }
         }
 
@@ -107,15 +107,15 @@ namespace ArmageddonPro
         private void channelList_doubleclick(object sender, EventArgs e)
         {
             channel chan = (channel)channelList.SelectedObject;
-            Control ctrl = frmMain.tabexists(chan.channelName);
+            Control ctrl = frmChat.tabexists(chan.channelName);
             if (ctrl == null)
             {
-                frmMain.newtab(chan.channelName, "", false, false);
-                frmMain.rawsend("JOIN " + chan.channelName);
+                frmChat.newtab(chan.channelName, "", false, false);
+                frmChat.rawsend("JOIN " + chan.channelName);
             }
             else
             {
-                frmMain.focustab(ctrl);
+                frmChat.focustab(ctrl);
             }
             
         }

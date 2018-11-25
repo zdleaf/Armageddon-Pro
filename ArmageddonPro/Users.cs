@@ -12,7 +12,7 @@ namespace ArmageddonPro
         public int shadedheight;
         public bool shaded = false;
 
-        private Chat frmMain;
+        private Chat frmChat;
         private ArrayList users;
 
         public Users(Chat frmform, ArrayList frmusers)
@@ -21,7 +21,7 @@ namespace ArmageddonPro
 
             this.ShowInTaskbar = false;
 
-            frmMain = frmform;
+            frmChat = frmform;
             users = frmusers;
 
             DoubleBuffered = true;
@@ -116,14 +116,14 @@ namespace ArmageddonPro
             if (userlist.SelectedIndex != -1)
             {
                 user row = (user)userlist.SelectedObject;
-                Control ctrl = frmMain.tabexists(row.username.ToString());
+                Control ctrl = frmChat.tabexists(row.username.ToString());
                 if (ctrl == null)
                 {
-                    frmMain.newtab(row.username.ToString(), null, true, false);
+                    frmChat.newtab(row.username.ToString(), null, true, false);
                 }
                 else
                 {
-                    frmMain.focustab(ctrl);
+                    frmChat.focustab(ctrl);
                 }
 
             }

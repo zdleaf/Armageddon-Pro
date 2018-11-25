@@ -1013,6 +1013,9 @@ namespace ArmageddonPro
             frmUserlist.Visible = false;
             frmGamelist.Show();
             frmChanlist.Show();
+            // Switch which form shows in taskbar - otherwise we have issues when clicking from taskbar to bring to front/when hiding chat
+            this.ShowInTaskbar = true;
+            frmGamelist.ShowInTaskbar = false;
         }
 
         public void hidechat()
@@ -1022,6 +1025,8 @@ namespace ArmageddonPro
             this.Hide();
             frmUserlist.Hide();
             frmChanlist.Hide();
+            this.ShowInTaskbar = false;
+            frmGamelist.ShowInTaskbar = true;
         }
 
         // Hide main window on Load if chathidden registry setting set - unable to do this on Load so needs to be overridden afterwards

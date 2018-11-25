@@ -34,11 +34,11 @@ namespace ArmageddonPro
         }
 
         public game storedgame;
-        private Chat frmMain;
+        private Chat frmChat;
 
         public Games(Chat frmform)
         {
-            frmMain = frmform;
+            frmChat = frmform;
             InitializeComponent();
 
             this.ShowInTaskbar = false;
@@ -612,12 +612,12 @@ namespace ArmageddonPro
             if (checkBox1.Checked == true)
             {
                 this.TopMost = true;
-                frmMain.alwaysontop = 1;
+                frmChat.alwaysontop = 1;
             }
             else
             {
                 this.TopMost = false;
-                frmMain.alwaysontop = 0;
+                frmChat.alwaysontop = 0;
             }
         }
 
@@ -625,11 +625,11 @@ namespace ArmageddonPro
         {
             if (checkBox2.Checked == true)
             {
-                frmMain.hidechat();
+                frmChat.hidechat();
             }
             else
             {
-                frmMain.showchat();
+                frmChat.showchat();
             }
         }
 

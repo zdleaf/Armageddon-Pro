@@ -185,6 +185,7 @@
             this.userlist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.userlist.FullRowSelect = true;
             this.userlist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.userlist.HeaderUsesThemes = false;
             this.userlist.HighlightBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.userlist.Location = new System.Drawing.Point(0, 0);
             this.userlist.Name = "userlist";
