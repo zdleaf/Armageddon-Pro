@@ -202,7 +202,7 @@
             this.panel1.Controls.Add(this.gamelist);
             this.panel1.Location = new System.Drawing.Point(1, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 276);
+            this.panel1.Size = new System.Drawing.Size(200, 276);
             this.panel1.TabIndex = 2;
             // 
             // host_panel
@@ -216,7 +216,7 @@
             this.host_panel.Controls.Add(this.txtbox_hostname);
             this.host_panel.Location = new System.Drawing.Point(0, 0);
             this.host_panel.Name = "host_panel";
-            this.host_panel.Size = new System.Drawing.Size(194, 276);
+            this.host_panel.Size = new System.Drawing.Size(200, 276);
             this.host_panel.TabIndex = 37;
             this.host_panel.Visible = false;
             // 
@@ -285,7 +285,7 @@
             this.settings_panel.Controls.Add(this.bkg_color_color);
             this.settings_panel.Location = new System.Drawing.Point(0, 2);
             this.settings_panel.Name = "settings_panel";
-            this.settings_panel.Size = new System.Drawing.Size(194, 276);
+            this.settings_panel.Size = new System.Drawing.Size(200, 276);
             this.settings_panel.TabIndex = 16;
             this.settings_panel.Visible = false;
             // 
@@ -513,7 +513,7 @@
             this.gamelist.Name = "gamelist";
             this.gamelist.OwnerDraw = true;
             this.gamelist.ShowGroups = false;
-            this.gamelist.Size = new System.Drawing.Size(194, 276);
+            this.gamelist.Size = new System.Drawing.Size(200, 276);
             this.gamelist.TabIndex = 15;
             this.gamelist.UseCompatibleStateImageBehavior = false;
             this.gamelist.View = System.Windows.Forms.View.Details;
