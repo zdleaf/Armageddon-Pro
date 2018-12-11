@@ -2,11 +2,16 @@
 using System.Collections;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Net;
+using System.Net.Http;
+using System.Net.Sockets;
 using System.IO;
 using System.Timers;
 using Microsoft.Win32;
+using System.Linq;
+
 
 using BrightIdeasSoftware;
 
@@ -21,6 +26,7 @@ namespace ArmageddonPro
         public string channel;
         public Color bordercolor = Color.Black;
         public ArrayList chanlist = new ArrayList();
+        public string gameid;
 
         public class game
         {
@@ -635,10 +641,7 @@ namespace ArmageddonPro
 
         private void host_btn_Click(object sender, EventArgs e)
         {
-            // ---HOST GAME HERE---
-            // NEW PAGE (LIKE SETTINGS) ASKING FOR GAME NAME + CHANNEL TO HOST IN
-            // HTTP GET HOST WITH RESPONSE (GAMEID)
-            // START WA.EXE WITH CORRECT PARAMS
+            // Show the host game window
 
             if (host_panel.Visible == false)
             {
@@ -653,7 +656,82 @@ namespace ArmageddonPro
                 settings_panel.Visible = false;
             }
 
-            // END
+        }
+
+
+        static string GetRawData(string server, string pageName, int byteCount, out int actualByteCountRecieved)
+        {
+            // return the raw http response as a string, or an exception if unable to connect
+
+            string fullRequest = "GET " + pageName + " HTTP/1.1\nHost: " + server + "\r\nUser-Agent: T17Client/3.7.2.1\n\n";
+            byte[] outputData = System.Text.Encoding.ASCII.GetBytes(fullRequest);
+
+            string responseData = String.Empty;
+            byte[] inputData = new Byte[byteCount];
+
+            try
+            {
+                TcpClient client = new TcpClient(server, 80);
+                NetworkStream stream = client.GetStream();
+                stream.Write(outputData, 0, outputData.Length);
+                actualByteCountRecieved = stream.Read(inputData, 0, byteCount);
+                responseData = System.Text.Encoding.ASCII.GetString(inputData, 0, actualByteCountRecieved);
+                stream.Close();
+                client.Close();
+                return responseData;
+            }
+            catch (SocketException ex)
+            {
+                actualByteCountRecieved = 0;
+                return "SocketException: " + ex;
+            }
+            catch (Exception ex)
+            {
+                actualByteCountRecieved = 0;
+                return "Exception: " + ex;
+            }
+        }
+
+        private void hostgame_btn_Click(object sender, EventArgs e)
+        {
+            // To host a game, we need to send an http GET request to Game.asp on wormnet with valid params and User-Agent.
+            // If successful, the http response returns a customer header named SetGameId which we can pass to and start our wa.exe instance to host the game.
+            // Using HttpClient or HttpWebRequest does not allow for receiving of custom headers (all headers are validated/filtered as per the RFC).
+            // We therefore need to get the raw http data and extract SetGameId from this with RegExp.
+
+            // ---HOST GAME HERE---
+            // NEW PAGE (LIKE SETTINGS) ASKING FOR GAME NAME + CHANNEL TO HOST IN
+            // HTTP GET HOST WITH RESPONSE (GAMEID)
+            // GET SCHEME FOR CHANNEL
+            // START WA.EXE WITH CORRECT PARAMS (gameID + scheme)
+
+            string ipaddress = "89.36.69.219";
+            string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ipaddress + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=0&Type=0";
+
+            int actualCount;
+            const int requestedCount = 512;
+            const string server = "wormnet1.team17.com"; 
+
+            // get the raw http response from wormnet
+            string rawhttpresponse = GetRawData(server, sURL, requestedCount, out actualCount);
+
+            // extract SetGameId with RegEx
+            var regex = new Regex("(?<=SetGameId: : ).*?(?=\\r\\n)");
+            if (regex.IsMatch(rawhttpresponse))
+            {
+                gameid = regex.Match(rawhttpresponse).Value;
+                Console.WriteLine("SetGameId: " + gameid);
+            }
+            else
+            {
+                MessageBox.Show("Error hosting game: " + rawhttpresponse);
+            }
+
+            // get scheme
+            string scheme = "Pf";
+
+            string hosturl = "wa://?gameid=" + gameid + "&scheme=" + scheme;
+
         }
     }
 

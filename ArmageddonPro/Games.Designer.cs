@@ -230,6 +230,7 @@
             this.hostgame_btn.TabIndex = 13;
             this.hostgame_btn.Text = "Host";
             this.hostgame_btn.UseVisualStyleBackColor = true;
+            this.hostgame_btn.Click += new System.EventHandler(this.hostgame_btn_Click);
             // 
             // host_chan_dropdown
             // 
@@ -239,9 +240,9 @@
             this.host_chan_dropdown.ForeColor = System.Drawing.Color.White;
             this.host_chan_dropdown.FormattingEnabled = true;
             this.host_chan_dropdown.Items.AddRange(new object[] {
-            "#AnythingGoes",
-            "#PartyTime",
-            "#RopersHeaven"});
+            "AnythingGoes",
+            "PartyTime",
+            "RopersHeaven"});
             this.host_chan_dropdown.Location = new System.Drawing.Point(10, 47);
             this.host_chan_dropdown.Name = "host_chan_dropdown";
             this.host_chan_dropdown.Size = new System.Drawing.Size(104, 21);
