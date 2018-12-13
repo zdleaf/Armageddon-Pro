@@ -663,7 +663,7 @@ namespace ArmageddonPro
         {
             // return the raw http response as a string, or an exception if unable to connect
 
-            string fullRequest = "GET " + pageName + " HTTP/1.1\nHost: " + server + "\r\nUser-Agent: T17Client/3.7.2.1\n\n";
+            string fullRequest = "GET " + pageName + " HTTP/1.1\nHost: " + server + "\r\nUserLevel: 0\r\nUserServerIdent: 2\r\nUser-Agent: T17Client/3.7.2.1\n\n";
             byte[] outputData = System.Text.Encoding.ASCII.GetBytes(fullRequest);
 
             string responseData = String.Empty;
@@ -705,8 +705,8 @@ namespace ArmageddonPro
             // GET SCHEME FOR CHANNEL
             // START WA.EXE WITH CORRECT PARAMS (gameID + scheme)
 
-            string ipaddress = "89.36.69.219";
-            string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ipaddress + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=0&Type=0";
+            string ipaddress = "";
+            string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ipaddress + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=49&Type=0&Pass=0";
 
             int actualCount;
             const int requestedCount = 512;
@@ -714,6 +714,8 @@ namespace ArmageddonPro
 
             // get the raw http response from wormnet
             string rawhttpresponse = GetRawData(server, sURL, requestedCount, out actualCount);
+
+            // HTTP/1.1 302 Found\r\nDate: Tue, 11 Dec 2018 07:55:15 GMT\r\nServer: Apache/2.2.16 (Debian)\r\nX-Powered-By: PHP / 5.3.3 - 7 + squeeze14\r\nSetGameId: : 4711\r\nLocation: / wormageddonweb / GameList.asp ? Channel = PartyTime\r\nVary: Accept - Encoding\r\nContent - Length: 185\r\nContent - Type: text / html\r\n\r\n < html >\n<head> < title > Object moved </ title ></ head >\n < body >\n<h1> Object moved </ h1 >\nThis object may be found<a href=\"/wormageddonweb/GameList.asp?Channel=PartyTime\">here</a>.\n</body>\n</html>\n
 
             // extract SetGameId with RegEx
             var regex = new Regex("(?<=SetGameId: : ).*?(?=\\r\\n)");
@@ -727,10 +729,26 @@ namespace ArmageddonPro
                 MessageBox.Show("Error hosting game: " + rawhttpresponse);
             }
 
-            // get scheme
-            string scheme = "Pf";
+            // get scheme flags for channel as we need to append these on game launch
+            string schemeURL = "/wormageddonweb/RequestChannelScheme.asp?Channel=" + host_chan_dropdown.Text;
+            string schemeflags = String.Empty;
+            string rawschemehttp = GetRawData(server, schemeURL, requestedCount, out actualCount);
 
-            string hosturl = "wa://?gameid=" + gameid + "&scheme=" + scheme;
+            var regexScheme = new Regex("(?<=SCHEME=).*?(?=>)");
+            if (regex.IsMatch(rawhttpresponse))
+            {
+                schemeflags = regexScheme.Match(rawschemehttp).Value;
+                Console.WriteLine("SchemeFlags: " + schemeflags);
+            }
+            else
+            {
+                MessageBox.Show("Error getting channel scheme: " + rawschemehttp);
+            }
+
+            string hosturl = "wa://?gameid=" + gameid + "&scheme=" + schemeflags;
+
+            System.Diagnostics.Process.Start(hosturl);
+
 
         }
     }
