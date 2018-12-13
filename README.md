@@ -7,5 +7,3 @@ Armageddon Pro is an alternative online front end for the popular game Worms Arm
  - Option to hide the chat window and only show the game list
  - Join and host games without leaving the desktop
  - Saves your settings, window sizes and positions to the registry
-
-Note: Armageddon Pro is still in active development
