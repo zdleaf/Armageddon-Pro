@@ -5,12 +5,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Net;
-using System.Net.Http;
 using System.Net.Sockets;
 using System.IO;
 using System.Timers;
 using Microsoft.Win32;
-using System.Linq;
 
 
 using BrightIdeasSoftware;
