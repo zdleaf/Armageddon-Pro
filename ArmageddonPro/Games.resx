@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC+
-        MQAAAk1TRnQBSQFMAgEBQAEAAVwBBQFcAQUBFAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        MQAAAk1TRnQBSQFMAgEBQAEAAXQBBQF0AQUBFAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABUAMAARABAQIAAQEBAAEIBgABVRgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
         AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
         AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
@@ -348,7 +348,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAW
-        CQAAAk1TRnQBSQFMAgEBAgEAAVwBBQFcAQUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAXQBBQF0AQUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -393,60 +393,11 @@
     <value>320, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="colordialog_border.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
-  <data name="colordialog_alternate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
-  <data name="colordialog_item.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
-  <data name="colordialog_text.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
-  <data name="colordialog_highlight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
-  <data name="colordialog_gamelist.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
-</value>
-  </data>
   <data name="settings_close_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhDgAOAIEDAPn5+f///wAAAP///yH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAADACwAAAAADgAO
         AAAIVgAHCBhIcIDBgwYFAFgIQEBChwgVLnQoIEAAiAItTsxoEWLFiw0TdswYcuBBhRcrhkQoEEDKACsj
         uhw48mHLixw9Nqz5EafEmjlbzmRpkiNMjEQJmgwIADs=
-</value>
-  </data>
-  <data name="colordialog_bkg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhGgAMAIECAAAAAHp/hf///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAGgAM
-        AAAIWQADCBxIsKBBgwASKly4MADDhg4FSJxIUSKAiBUFXMSYkeJFAAIKahQIsqPHiBtRkjR5suRHiytZ
-        wiypceJGmixfirwpc6bGhSM55hRqk+TDow6PpjzItGlAADs=
 </value>
   </data>
   <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

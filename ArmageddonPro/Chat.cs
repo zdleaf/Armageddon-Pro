@@ -84,18 +84,19 @@ namespace ArmageddonPro
         public ArrayList users = new ArrayList();
         public ArrayList channels = new ArrayList();
 
-        private Users frmChanlist;
+        private Users frmUserlist;
         private Games frmGamelist;
-        private Channels frmUserlist;
+        private Channels frmChanlist;
 
         public Chat()
         {
 
             // this.ShowInTaskbar = false;
 
-            frmChanlist = new Users(this, users);
-            frmGamelist = new Games(this);
-            frmUserlist = new Channels(this, channels);
+            frmUserlist = new Users(this, users);
+            frmChanlist = new Channels(this, channels);
+            frmGamelist = new Games(this, frmUserlist, frmChanlist);
+            
 
             ConnectForm(frmChanlist);
             ConnectForm(frmGamelist);
@@ -448,7 +449,7 @@ namespace ArmageddonPro
                     }
                 }
 
-                frmChanlist.userlist.SetObjects(users);
+                frmUserlist.userlist.SetObjects(users);
 
                 Control[] ctrl = this.Controls.Find("tb" + tabname, true);
                 if (ctrl.Length != 0)
@@ -479,7 +480,7 @@ namespace ArmageddonPro
                     }
                 }
 
-                frmChanlist.userlist.SetObjects(users);
+                frmUserlist.userlist.SetObjects(users);
 
                 Control[] ctrl = this.Controls.Find("tb" + tabname, true);
                 if (ctrl.Length != 0)
@@ -580,7 +581,7 @@ namespace ArmageddonPro
 
                 }
 
-                frmChanlist.userlist.SetObjects(users);
+                frmUserlist.userlist.SetObjects(users);
 
             }
 
@@ -622,12 +623,12 @@ namespace ArmageddonPro
                 if (exists == false)
                 {
                     channels.Add(chan);
-                    frmUserlist.channelList.SetObjects(channels);
+                    frmChanlist.channelList.SetObjects(channels);
                 }
                 else
                 {
                     chan.channelUsercount = Int32.Parse(channellist[4]);
-                    frmUserlist.channelList.RefreshObject(chan);
+                    frmChanlist.channelList.RefreshObject(chan);
                 }
 
 
@@ -751,7 +752,7 @@ namespace ArmageddonPro
             srReceiver.Close();
             tcpServer.Close();
             // Clear userlist
-            frmChanlist.userlist.SetObjects(null);
+            frmUserlist.userlist.SetObjects(null);
         }
 
 
@@ -804,29 +805,29 @@ namespace ArmageddonPro
             // FLAGS
             this.flags.ItemHeight = 18;
             string[] flagsstr;
-            flagsstr = new string[frmChanlist.flagsList.Images.Count];
-            for (int i = 0; i < frmChanlist.flagsList.Images.Count; i++)
+            flagsstr = new string[frmUserlist.flagsList.Images.Count];
+            for (int i = 0; i < frmUserlist.flagsList.Images.Count; i++)
             {
-                this.flags.Items.Add(frmChanlist.flagsList.Images[i]);
+                this.flags.Items.Add(frmUserlist.flagsList.Images[i]);
 
             }
             this.flags.DropDownStyle = ComboBoxStyle.DropDownList;
             this.flags.DrawMode = DrawMode.OwnerDrawVariable;
-            this.flags.Width = this.frmChanlist.flagsList.ImageSize.Width + 24;
+            this.flags.Width = this.frmUserlist.flagsList.ImageSize.Width + 24;
 
 
             // RANKS
             this.rank.ItemHeight = 18;
             string[] ranks;
-            ranks = new string[frmChanlist.rankList.Images.Count];
-            for (int i = 0; i < frmChanlist.rankList.Images.Count; i++)
+            ranks = new string[frmUserlist.rankList.Images.Count];
+            for (int i = 0; i < frmUserlist.rankList.Images.Count; i++)
             {
-                this.rank.Items.Add(frmChanlist.rankList.Images[i]);
+                this.rank.Items.Add(frmUserlist.rankList.Images[i]);
 
             }
             this.rank.DropDownStyle = ComboBoxStyle.DropDownList;
             this.rank.DrawMode = DrawMode.OwnerDrawVariable;
-            this.rank.Width = this.frmChanlist.rankList.ImageSize.Width + 20;
+            this.rank.Width = this.frmUserlist.rankList.ImageSize.Width + 20;
 
             // LOAD SETTINGS FROM REGISTRY
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\zincldn");
@@ -874,7 +875,7 @@ namespace ArmageddonPro
             if ((int)key.GetValue("chathidden") == 1)
             {
                 frmGamelist.Show();
-                frmGamelist.checkBox2.Checked = true;
+                frmGamelist.hidechat.Checked = true;
                 chathidden = 1;
             }
             else 
@@ -887,11 +888,11 @@ namespace ArmageddonPro
 
             if ((int)key.GetValue("alwaysontop") == 1)
             {
-                frmGamelist.checkBox1.Checked = true;
+                frmGamelist.alwaysontop.Checked = true;
             }
             else 
             {
-                frmGamelist.checkBox1.Checked = false;
+                frmGamelist.alwaysontop.Checked = false;
             }
 
             if (key.GetValue("user") != null)
@@ -910,7 +911,7 @@ namespace ArmageddonPro
             if (e.Index != -1)
             {
 
-                e.Graphics.DrawImage(frmChanlist.flagsList.Images[e.Index],
+                e.Graphics.DrawImage(frmUserlist.flagsList.Images[e.Index],
                 e.Bounds.Left, e.Bounds.Top);
             }
 
@@ -921,7 +922,7 @@ namespace ArmageddonPro
             if (e.Index != -1)
             {
 
-                e.Graphics.DrawImage(frmChanlist.rankList.Images[e.Index],
+                e.Graphics.DrawImage(frmUserlist.rankList.Images[e.Index],
                 e.Bounds.Left, e.Bounds.Top);
             }
         }

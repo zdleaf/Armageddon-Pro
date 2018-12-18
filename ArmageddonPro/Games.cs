@@ -39,10 +39,14 @@ namespace ArmageddonPro
 
         public game storedgame;
         private Chat frmChat;
+        private Users frmUserlist;
+        private Channels frmChanlist;
 
-        public Games(Chat frmform)
+        public Games(Chat frmform, Users frmusers, Channels frmchans)
         {
             frmChat = frmform;
+            frmUserlist = frmusers;
+            frmChanlist = frmchans;
             InitializeComponent();
 
             this.ShowInTaskbar = false;
@@ -262,8 +266,8 @@ namespace ArmageddonPro
             }
             else
             {
-                // path = @"C:\\Windows\\win.ini"; 
-                path = @"C:\Team17\Worms Armageddon\WA.ini"; //path when using wkPrivateCfg.dll
+                path = @"C:\Windows\win.ini"; 
+                // path = @"C:\Team17\Worms Armageddon\WA.ini"; //path when using wkPrivateCfg.dll
             }
 
             if (File.Exists(path) == false)
@@ -541,6 +545,8 @@ namespace ArmageddonPro
             readfile(wormnet_name.Text);
         }
 
+        /* THEME CODE - TO MOVE TO Chat.cs
+         
         private void bkgcolor_btn_click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
@@ -583,6 +589,8 @@ namespace ArmageddonPro
             gamelist.ForeColor = colorDialog6.Color;
         }
 
+        */
+
         private void Form4_Paint(object sender, PaintEventArgs e)
         {
             /* 1PX LINE BORDER
@@ -593,8 +601,9 @@ namespace ArmageddonPro
             surface.DrawRectangle(pen1, border);
 
             */
-        }
-
+        } 
+    
+        
         private void border_color_Click(object sender, EventArgs e)
         {
             colorDialog7.ShowDialog();
@@ -613,21 +622,27 @@ namespace ArmageddonPro
 
         private void alwaysontop_changed(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
+            if (alwaysontop.Checked == true)
             {
                 this.TopMost = true;
+                frmChat.TopMost = true;
+                frmUserlist.TopMost = true;
+                frmChanlist.TopMost = true;
                 frmChat.alwaysontop = 1;
             }
             else
             {
                 this.TopMost = false;
+                frmChat.TopMost = false;
+                frmUserlist.TopMost = false;
+                frmChanlist.TopMost = false;
                 frmChat.alwaysontop = 0;
             }
         }
 
         private void hidechat_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked == true)
+            if (hidechat.Checked == true)
             {
                 frmChat.hidechat();
             }

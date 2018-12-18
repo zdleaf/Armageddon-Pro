@@ -46,11 +46,36 @@
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCloseTab = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.colordialog_border = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.colordialog_alternate = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.colordialog_item = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.colordialog_text = new System.Windows.Forms.PictureBox();
+            this.colordialog_highlight = new System.Windows.Forms.PictureBox();
+            this.colordialog_gamelist = new System.Windows.Forms.PictureBox();
+            this.colordialog_bkg = new System.Windows.Forms.PictureBox();
+            this.bkg_color_color = new System.Windows.Forms.Panel();
+            this.gamelistbkg_color = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.shade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resize)).BeginInit();
             this.tabControlEX1.SuspendLayout();
             this.tabPageEX1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPageEX2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_border)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_alternate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_text)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_highlight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_gamelist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_bkg)).BeginInit();
+            this.bkg_color_color.SuspendLayout();
             this.SuspendLayout();
             // 
             // shade
@@ -83,8 +108,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlEX1.Appearance = Dotnetrix.Controls.TabAppearanceEX.FlatTab;
             this.tabControlEX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.tabControlEX1.Controls.Add(this.tabPageEX1);
             this.tabControlEX1.Controls.Add(this.tabPageEX2);
+            this.tabControlEX1.Controls.Add(this.tabPageEX1);
             this.tabControlEX1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.tabControlEX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlEX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
@@ -236,6 +261,21 @@
             // 
             // tabPageEX2
             // 
+            this.tabPageEX2.Controls.Add(this.bkg_color_color);
+            this.tabPageEX2.Controls.Add(this.colordialog_border);
+            this.tabPageEX2.Controls.Add(this.label7);
+            this.tabPageEX2.Controls.Add(this.label6);
+            this.tabPageEX2.Controls.Add(this.colordialog_alternate);
+            this.tabPageEX2.Controls.Add(this.label5);
+            this.tabPageEX2.Controls.Add(this.colordialog_item);
+            this.tabPageEX2.Controls.Add(this.label4);
+            this.tabPageEX2.Controls.Add(this.label3);
+            this.tabPageEX2.Controls.Add(this.label2);
+            this.tabPageEX2.Controls.Add(this.label1);
+            this.tabPageEX2.Controls.Add(this.colordialog_text);
+            this.tabPageEX2.Controls.Add(this.colordialog_highlight);
+            this.tabPageEX2.Controls.Add(this.colordialog_gamelist);
+            this.tabPageEX2.Controls.Add(this.colordialog_bkg);
             this.tabPageEX2.Location = new System.Drawing.Point(4, 25);
             this.tabPageEX2.Name = "tabPageEX2";
             this.tabPageEX2.Size = new System.Drawing.Size(620, 313);
@@ -280,21 +320,168 @@
             this.btnCloseTab.UseVisualStyleBackColor = true;
             this.btnCloseTab.Click += new System.EventHandler(this.btnCloseTab_Click);
             // 
-            // Form1
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(274, 204);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 47;
+            this.label7.Text = "border color";
+            // 
+            // colordialog_border
+            // 
+            this.colordialog_border.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_border.Image")));
+            this.colordialog_border.Location = new System.Drawing.Point(246, 204);
+            this.colordialog_border.Name = "colordialog_border";
+            this.colordialog_border.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_border.TabIndex = 46;
+            this.colordialog_border.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AccessibleName = "colorlabels";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(274, 167);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "alternate item color";
+            // 
+            // colordialog_alternate
+            // 
+            this.colordialog_alternate.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_alternate.Image")));
+            this.colordialog_alternate.Location = new System.Drawing.Point(246, 168);
+            this.colordialog_alternate.Name = "colordialog_alternate";
+            this.colordialog_alternate.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_alternate.TabIndex = 44;
+            this.colordialog_alternate.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AccessibleName = "colorlabels";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(278, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "item color 1";
+            // 
+            // colordialog_item
+            // 
+            this.colordialog_item.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_item.Image")));
+            this.colordialog_item.Location = new System.Drawing.Point(246, 150);
+            this.colordialog_item.Name = "colordialog_item";
+            this.colordialog_item.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_item.TabIndex = 42;
+            this.colordialog_item.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AccessibleName = "colorlabels";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(276, 186);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "text color";
+            // 
+            // label3
+            // 
+            this.label3.AccessibleName = "colorlabels";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(276, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "item highlight color";
+            // 
+            // label2
+            // 
+            this.label2.AccessibleName = "colorlabels";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(281, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "gamelist_bkg";
+            // 
+            // label1
+            // 
+            this.label1.AccessibleName = "colorlabels";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(281, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "background_color";
+            // 
+            // colordialog_text
+            // 
+            this.colordialog_text.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_text.Image")));
+            this.colordialog_text.Location = new System.Drawing.Point(246, 186);
+            this.colordialog_text.Name = "colordialog_text";
+            this.colordialog_text.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_text.TabIndex = 37;
+            this.colordialog_text.TabStop = false;
+            // 
+            // colordialog_highlight
+            // 
+            this.colordialog_highlight.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_highlight.Image")));
+            this.colordialog_highlight.Location = new System.Drawing.Point(246, 132);
+            this.colordialog_highlight.Name = "colordialog_highlight";
+            this.colordialog_highlight.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_highlight.TabIndex = 36;
+            this.colordialog_highlight.TabStop = false;
+            // 
+            // colordialog_gamelist
+            // 
+            this.colordialog_gamelist.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_gamelist.Image")));
+            this.colordialog_gamelist.Location = new System.Drawing.Point(246, 114);
+            this.colordialog_gamelist.Name = "colordialog_gamelist";
+            this.colordialog_gamelist.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_gamelist.TabIndex = 35;
+            this.colordialog_gamelist.TabStop = false;
+            // 
+            // colordialog_bkg
+            // 
+            this.colordialog_bkg.Image = ((System.Drawing.Image)(resources.GetObject("colordialog_bkg.Image")));
+            this.colordialog_bkg.Location = new System.Drawing.Point(246, 96);
+            this.colordialog_bkg.Name = "colordialog_bkg";
+            this.colordialog_bkg.Size = new System.Drawing.Size(26, 12);
+            this.colordialog_bkg.TabIndex = 34;
+            this.colordialog_bkg.TabStop = false;
+            // 
+            // bkg_color_color
+            // 
+            this.bkg_color_color.Controls.Add(this.gamelistbkg_color);
+            this.bkg_color_color.Location = new System.Drawing.Point(303, 151);
+            this.bkg_color_color.Name = "bkg_color_color";
+            this.bkg_color_color.Size = new System.Drawing.Size(14, 10);
+            this.bkg_color_color.TabIndex = 48;
+            // 
+            // gamelistbkg_color
+            // 
+            this.gamelistbkg_color.Location = new System.Drawing.Point(0, 18);
+            this.gamelistbkg_color.Name = "gamelistbkg_color";
+            this.gamelistbkg_color.Size = new System.Drawing.Size(14, 10);
+            this.gamelistbkg_color.TabIndex = 32;
+            // 
+            // Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(628, 382);
             this.ControlBox = false;
+            this.Controls.Add(this.tabControlEX1);
             this.Controls.Add(this.btnCloseTab);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.shade);
             this.Controls.Add(this.resize);
-            this.Controls.Add(this.tabControlEX1);
             this.Controls.Add(this.txtMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Chat";
             this.Text = "ArmageddonPro";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.shade)).EndInit();
@@ -304,6 +491,16 @@
             this.tabPageEX1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPageEX2.ResumeLayout(false);
+            this.tabPageEX2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_border)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_alternate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_text)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_highlight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_gamelist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colordialog_bkg)).EndInit();
+            this.bkg_color_color.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,6 +525,22 @@
         public System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnCloseTab;
+        private System.Windows.Forms.PictureBox colordialog_border;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox colordialog_alternate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox colordialog_item;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox colordialog_text;
+        private System.Windows.Forms.PictureBox colordialog_highlight;
+        private System.Windows.Forms.PictureBox colordialog_gamelist;
+        private System.Windows.Forms.PictureBox colordialog_bkg;
+        private System.Windows.Forms.Panel bkg_color_color;
+        private System.Windows.Forms.Panel gamelistbkg_color;
     }
 }
 
