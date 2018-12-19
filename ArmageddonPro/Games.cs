@@ -37,6 +37,14 @@ namespace ArmageddonPro
             public string chan;
         }
 
+        // information from win.ini
+        public class winini
+        {
+            public int port;
+            public string playername;
+            public string ipaddress;
+        }
+
         public game storedgame;
         private Chat frmChat;
         private Users frmUserlist;
@@ -252,10 +260,10 @@ namespace ArmageddonPro
             }
         }
 
-        public void readfile(string name)
+        public string readfile(string search)
         {
             StringBuilder newFile = new StringBuilder();
-            string temp = "";
+            string result = String.Empty;
             string path;
             int length;
 
@@ -273,25 +281,31 @@ namespace ArmageddonPro
             if (File.Exists(path) == false)
             {
                 MessageBox.Show("Error: Path to win.ini not found");
-                return;
+                return "Set path to win.ini";
             }
 
             string[] file = File.ReadAllLines(path);
             foreach (string line in file)
             {
-                if (line.Contains("PlayerName="))
+                if (line.Contains(search))
                 {
-                    length = line.Length - 11;
-                    temp = line.Remove(11, length);
-                    temp = temp.Insert(11, name);
-                    newFile.Append(temp + "\r\n");
-                    continue;
-
+                    length = line.Length - search.Length;
+                    result = line.Substring(search.Length, length);
+                    break;
                 }
-                newFile.Append(line + "\r\n");
             }
-            File.WriteAllText(path, newFile.ToString(), Encoding.GetEncoding(0));
 
+            // if we've found the value in win.ini, return it
+            if (result != "")
+            {
+                return result;
+            }
+            // otherwise it's blank/not found
+            else
+            {
+                return "Not found in win.ini";
+            }
+            
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -538,13 +552,6 @@ namespace ArmageddonPro
         }
 
 
-        private void settings_close_click(object sender, EventArgs e)
-        {
-            gamelist.Visible = true;
-            settings_panel.Visible = false;
-            readfile(wormnet_name.Text);
-        }
-
         /* THEME CODE - TO MOVE TO Chat.cs
          
         private void bkgcolor_btn_click(object sender, EventArgs e)
@@ -718,7 +725,8 @@ namespace ArmageddonPro
             // GET SCHEME FOR CHANNEL
             // START WA.EXE WITH CORRECT PARAMS (gameID + scheme)
 
-            string ipaddress = "";
+            // ipaddress needs to be sense checked before hosting i.e. is valid IP
+            string ipaddress = setIP.Text;
             string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ipaddress + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=49&Type=0&Pass=0";
 
             int actualCount;
@@ -763,6 +771,21 @@ namespace ArmageddonPro
             System.Diagnostics.Process.Start(hosturl);
 
 
+        }
+
+        // save path to win.ini in registry
+        private void setPathtoWinINI(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void setGet_IP_Port_checked(object sender, EventArgs e)
+        {
+            if (setGet_IP_Port.Checked == true)
+            {
+                setIP.Text = readfile("LocalAddress=");
+                setPort.Text = readfile("HostingPort=");
+            }
         }
     }
 

@@ -35,10 +35,12 @@
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.settings_panel = new System.Windows.Forms.Panel();
+            this.setGet_IP_Port = new System.Windows.Forms.CheckBox();
+            this.setPort = new System.Windows.Forms.TextBox();
+            this.setPath = new System.Windows.Forms.Button();
+            this.setIP = new System.Windows.Forms.TextBox();
             this.hidechat = new System.Windows.Forms.CheckBox();
             this.alwaysontop = new System.Windows.Forms.CheckBox();
-            this.wormnet_name = new System.Windows.Forms.TextBox();
-            this.settings_close_btn = new System.Windows.Forms.PictureBox();
             this.host_panel = new System.Windows.Forms.Panel();
             this.hostgame_btn = new System.Windows.Forms.Button();
             this.host_chan_dropdown = new System.Windows.Forms.ComboBox();
@@ -67,7 +69,6 @@
             this.colorDialog7 = new System.Windows.Forms.ColorDialog();
             this.panel1.SuspendLayout();
             this.settings_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.settings_close_btn)).BeginInit();
             this.host_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamelist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
@@ -187,20 +188,69 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.settings_panel.AutoScroll = true;
+            this.settings_panel.Controls.Add(this.setPort);
+            this.settings_panel.Controls.Add(this.setPath);
+            this.settings_panel.Controls.Add(this.setGet_IP_Port);
+            this.settings_panel.Controls.Add(this.setIP);
             this.settings_panel.Controls.Add(this.hidechat);
             this.settings_panel.Controls.Add(this.alwaysontop);
-            this.settings_panel.Controls.Add(this.wormnet_name);
-            this.settings_panel.Controls.Add(this.settings_close_btn);
             this.settings_panel.Location = new System.Drawing.Point(0, 2);
             this.settings_panel.Name = "settings_panel";
             this.settings_panel.Size = new System.Drawing.Size(200, 276);
             this.settings_panel.TabIndex = 16;
             this.settings_panel.Visible = false;
             // 
+            // setGet_IP_Port
+            // 
+            this.setGet_IP_Port.AutoSize = true;
+            this.setGet_IP_Port.ForeColor = System.Drawing.Color.White;
+            this.setGet_IP_Port.Location = new System.Drawing.Point(9, 129);
+            this.setGet_IP_Port.Name = "setGet_IP_Port";
+            this.setGet_IP_Port.Size = new System.Drawing.Size(151, 17);
+            this.setGet_IP_Port.TabIndex = 39;
+            this.setGet_IP_Port.Text = "get IP and port from win.ini";
+            this.setGet_IP_Port.UseVisualStyleBackColor = true;
+            this.setGet_IP_Port.CheckedChanged += new System.EventHandler(this.setGet_IP_Port_checked);
+            // 
+            // setPort
+            // 
+            this.setPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.setPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setPort.ForeColor = System.Drawing.Color.White;
+            this.setPort.Location = new System.Drawing.Point(9, 103);
+            this.setPort.Name = "setPort";
+            this.setPort.Size = new System.Drawing.Size(123, 20);
+            this.setPort.TabIndex = 38;
+            this.setPort.Text = "Port";
+            // 
+            // setPath
+            // 
+            this.setPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.setPath.Location = new System.Drawing.Point(9, 152);
+            this.setPath.Name = "setPath";
+            this.setPath.Size = new System.Drawing.Size(123, 22);
+            this.setPath.TabIndex = 19;
+            this.setPath.Text = "Set path to win.ini";
+            this.setPath.UseVisualStyleBackColor = true;
+            this.setPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.setPathtoWinINI);
+            // 
+            // setIP
+            // 
+            this.setIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.setIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setIP.ForeColor = System.Drawing.Color.White;
+            this.setIP.Location = new System.Drawing.Point(9, 77);
+            this.setIP.Name = "setIP";
+            this.setIP.Size = new System.Drawing.Size(123, 20);
+            this.setIP.TabIndex = 37;
+            this.setIP.Text = "IP address";
+            // 
             // hidechat
             // 
             this.hidechat.AutoSize = true;
-            this.hidechat.Location = new System.Drawing.Point(23, 97);
+            this.hidechat.ForeColor = System.Drawing.Color.White;
+            this.hidechat.Location = new System.Drawing.Point(9, 37);
             this.hidechat.Name = "hidechat";
             this.hidechat.Size = new System.Drawing.Size(70, 17);
             this.hidechat.TabIndex = 36;
@@ -211,32 +261,14 @@
             // alwaysontop
             // 
             this.alwaysontop.AutoSize = true;
-            this.alwaysontop.Location = new System.Drawing.Point(23, 74);
+            this.alwaysontop.ForeColor = System.Drawing.Color.White;
+            this.alwaysontop.Location = new System.Drawing.Point(9, 14);
             this.alwaysontop.Name = "alwaysontop";
             this.alwaysontop.Size = new System.Drawing.Size(91, 17);
             this.alwaysontop.TabIndex = 35;
             this.alwaysontop.Text = "always on top";
             this.alwaysontop.UseVisualStyleBackColor = true;
             this.alwaysontop.CheckedChanged += new System.EventHandler(this.alwaysontop_changed);
-            // 
-            // wormnet_name
-            // 
-            this.wormnet_name.Location = new System.Drawing.Point(19, 40);
-            this.wormnet_name.Name = "wormnet_name";
-            this.wormnet_name.Size = new System.Drawing.Size(123, 20);
-            this.wormnet_name.TabIndex = 34;
-            this.wormnet_name.Text = "madøg";
-            // 
-            // settings_close_btn
-            // 
-            this.settings_close_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settings_close_btn.BackgroundImage")));
-            this.settings_close_btn.InitialImage = null;
-            this.settings_close_btn.Location = new System.Drawing.Point(6, 1);
-            this.settings_close_btn.Name = "settings_close_btn";
-            this.settings_close_btn.Size = new System.Drawing.Size(19, 21);
-            this.settings_close_btn.TabIndex = 19;
-            this.settings_close_btn.TabStop = false;
-            this.settings_close_btn.Click += new System.EventHandler(this.settings_close_click);
             // 
             // host_panel
             // 
@@ -257,7 +289,7 @@
             // 
             this.hostgame_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hostgame_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.hostgame_btn.Location = new System.Drawing.Point(75, 76);
+            this.hostgame_btn.Location = new System.Drawing.Point(9, 74);
             this.hostgame_btn.Name = "hostgame_btn";
             this.hostgame_btn.Size = new System.Drawing.Size(40, 25);
             this.hostgame_btn.TabIndex = 13;
@@ -514,7 +546,6 @@
             this.panel1.ResumeLayout(false);
             this.settings_panel.ResumeLayout(false);
             this.settings_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.settings_close_btn)).EndInit();
             this.host_panel.ResumeLayout(false);
             this.host_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gamelist)).EndInit();
@@ -549,7 +580,6 @@
         private System.Windows.Forms.PictureBox settings;
         private System.Windows.Forms.Panel settings_panel;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.PictureBox settings_close_btn;
         private System.Windows.Forms.ColorDialog colorDialog2;
         private System.Windows.Forms.ColorDialog colorDialog3;
         private System.Windows.Forms.ColorDialog colorDialog4;
@@ -558,12 +588,15 @@
         private System.Windows.Forms.ColorDialog colorDialog7;
         private BrightIdeasSoftware.OLVColumn ip;
         private BrightIdeasSoftware.OLVColumn id;
-        private System.Windows.Forms.TextBox wormnet_name;
         public System.Windows.Forms.CheckBox hidechat;
         public System.Windows.Forms.CheckBox alwaysontop;
         private System.Windows.Forms.Panel host_panel;
         private System.Windows.Forms.TextBox txtbox_hostname;
         private System.Windows.Forms.ComboBox host_chan_dropdown;
         public System.Windows.Forms.Button hostgame_btn;
+        private System.Windows.Forms.TextBox setIP;
+        public System.Windows.Forms.Button setPath;
+        public System.Windows.Forms.CheckBox setGet_IP_Port;
+        private System.Windows.Forms.TextBox setPort;
     }
 }
