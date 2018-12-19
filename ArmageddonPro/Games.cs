@@ -714,10 +714,10 @@ namespace ArmageddonPro
 
         private void hostgame_btn_Click(object sender, EventArgs e)
         {
-            // To host a game, we need to send an http GET request to Game.asp on wormnet with valid params and User-Agent.
-            // If successful, the http response returns a customer header named SetGameId which we can pass to and start our wa.exe instance to host the game.
-            // Using HttpClient or HttpWebRequest does not allow for receiving of custom headers (all headers are validated/filtered as per the RFC).
-            // We therefore need to get the raw http data and extract SetGameId from this with RegExp.
+            // To host a game, we need to send an http GET request to Game.asp on wormnet with valid params and User-Agent
+            // If successful, the http response returns a customer header named SetGameId which we can pass to and start our wa.exe instance to host the game
+            // Using HttpClient or HttpWebRequest does not allow for receiving of custom headers (all headers are validated/filtered as per the RFC)
+            // We therefore need to get the raw http data and extract SetGameId from this with RegExp
 
             // ---HOST GAME HERE---
             // NEW PAGE (LIKE SETTINGS) ASKING FOR GAME NAME + CHANNEL TO HOST IN
@@ -725,15 +725,45 @@ namespace ArmageddonPro
             // GET SCHEME FOR CHANNEL
             // START WA.EXE WITH CORRECT PARAMS (gameID + scheme)
 
-            // ipaddress needs to be sense checked before hosting i.e. is valid IP
-            string ipaddress = setIP.Text;
-            string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ipaddress + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=49&Type=0&Pass=0";
+            // ipaddress from settings needs to be sense checked before hosting i.e. is valid IP
+            IPAddress verifiedIP;
+            string ipaddress;
+            int portnumber;
+            string ip_port;
 
+            if (IPAddress.TryParse(setIP.Text, out verifiedIP))
+            {
+                ipaddress = setIP.Text;
+            }
+            else
+            {
+                MessageBox.Show("Incorrect IP address - amend in settings");
+                return;
+            }
+            
+            // also need to verify the port number is correct
+            if (int.TryParse(setPort.Text, out portnumber)
+                && portnumber >= 1
+                && portnumber <= 65535)
+            {
+                portnumber = Convert.ToInt32(setPort.Text);
+            }
+            else
+            {
+                MessageBox.Show("Incorrect port # - amend in settings");
+                return;
+            }
+
+            // combine the IP address and port number e.g. 127.0.0.1:17011
+            ip_port = String.Concat(ipaddress, ":", portnumber);
+
+            // create the hosting url to send to wormnet
+            string sURL = "/wormageddonweb/Game.asp?Cmd=Create&Name=" + txtbox_hostname.Text + "&HostIP=" + ip_port + "&Nick=" + frmChat.txtUser.Text + "&Chan=" + host_chan_dropdown.Text + "&Loc=49&Type=0&Pass=0";
+
+            // get the raw http response from wormnet
             int actualCount;
             const int requestedCount = 512;
             const string server = "wormnet1.team17.com"; 
-
-            // get the raw http response from wormnet
             string rawhttpresponse = GetRawData(server, sURL, requestedCount, out actualCount);
 
             // HTTP/1.1 302 Found\r\nDate: Tue, 11 Dec 2018 07:55:15 GMT\r\nServer: Apache/2.2.16 (Debian)\r\nX-Powered-By: PHP / 5.3.3 - 7 + squeeze14\r\nSetGameId: : 4711\r\nLocation: / wormageddonweb / GameList.asp ? Channel = PartyTime\r\nVary: Accept - Encoding\r\nContent - Length: 185\r\nContent - Type: text / html\r\n\r\n < html >\n<head> < title > Object moved </ title ></ head >\n < body >\n<h1> Object moved </ h1 >\nThis object may be found<a href=\"/wormageddonweb/GameList.asp?Channel=PartyTime\">here</a>.\n</body>\n</html>\n
