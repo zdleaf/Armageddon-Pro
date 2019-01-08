@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ICON.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="ObjectListView, Version=2.4.0.21838, Culture=neutral, processorArchitecture=MSIL">
@@ -183,6 +186,7 @@
     <None Include="Resources\refresh3-next.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ICON.ico" />
     <Content Include="TabControlEX.dll" />
   </ItemGroup>
   <ItemGroup>
