@@ -34,7 +34,7 @@
             this.tabControlEX1 = new Dotnetrix.Controls.TabControlEX();
             this.tabPageEX1 = new Dotnetrix.Controls.TabPageEX();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.showChanList = new System.Windows.Forms.Button();
             this.flags = new System.Windows.Forms.ComboBox();
             this.rank = new System.Windows.Forms.ComboBox();
             this.server = new System.Windows.Forms.ComboBox();
@@ -43,11 +43,11 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.tabPageEX2 = new Dotnetrix.Controls.TabPageEX();
-            this.txtMessage = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnCloseTab = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.bkg_color_color = new System.Windows.Forms.Panel();
+            this.gamelistbkg_color = new System.Windows.Forms.Panel();
             this.colordialog_border = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.colordialog_alternate = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,14 +60,16 @@
             this.colordialog_highlight = new System.Windows.Forms.PictureBox();
             this.colordialog_gamelist = new System.Windows.Forms.PictureBox();
             this.colordialog_bkg = new System.Windows.Forms.PictureBox();
-            this.bkg_color_color = new System.Windows.Forms.Panel();
-            this.gamelistbkg_color = new System.Windows.Forms.Panel();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnCloseTab = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.shade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resize)).BeginInit();
             this.tabControlEX1.SuspendLayout();
             this.tabPageEX1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPageEX2.SuspendLayout();
+            this.bkg_color_color.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_alternate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_item)).BeginInit();
@@ -75,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_highlight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_gamelist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_bkg)).BeginInit();
-            this.bkg_color_color.SuspendLayout();
             this.SuspendLayout();
             // 
             // shade
@@ -108,8 +109,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlEX1.Appearance = Dotnetrix.Controls.TabAppearanceEX.FlatTab;
             this.tabControlEX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.tabControlEX1.Controls.Add(this.tabPageEX2);
             this.tabControlEX1.Controls.Add(this.tabPageEX1);
+            this.tabControlEX1.Controls.Add(this.tabPageEX2);
             this.tabControlEX1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.tabControlEX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlEX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
@@ -140,7 +141,7 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.showChanList);
             this.panel1.Controls.Add(this.flags);
             this.panel1.Controls.Add(this.rank);
             this.panel1.Controls.Add(this.server);
@@ -152,16 +153,16 @@
             this.panel1.Size = new System.Drawing.Size(618, 83);
             this.panel1.TabIndex = 14;
             // 
-            // button3
+            // showChanList
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(447, 43);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 21);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Channel list";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.showChanList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showChanList.Location = new System.Drawing.Point(447, 43);
+            this.showChanList.Name = "showChanList";
+            this.showChanList.Size = new System.Drawing.Size(106, 21);
+            this.showChanList.TabIndex = 16;
+            this.showChanList.Text = "Channel list";
+            this.showChanList.UseVisualStyleBackColor = true;
+            this.showChanList.Click += new System.EventHandler(this.showChanList_Click);
             // 
             // flags
             // 
@@ -261,6 +262,7 @@
             // 
             // tabPageEX2
             // 
+            this.tabPageEX2.Controls.Add(this.label8);
             this.tabPageEX2.Controls.Add(this.bkg_color_color);
             this.tabPageEX2.Controls.Add(this.colordialog_border);
             this.tabPageEX2.Controls.Add(this.label7);
@@ -276,58 +278,36 @@
             this.tabPageEX2.Controls.Add(this.colordialog_highlight);
             this.tabPageEX2.Controls.Add(this.colordialog_gamelist);
             this.tabPageEX2.Controls.Add(this.colordialog_bkg);
+            this.tabPageEX2.Enabled = false;
             this.tabPageEX2.Location = new System.Drawing.Point(4, 25);
             this.tabPageEX2.Name = "tabPageEX2";
             this.tabPageEX2.Size = new System.Drawing.Size(620, 313);
             this.tabPageEX2.TabIndex = 1;
             this.tabPageEX2.Text = "settings/options";
             // 
-            // txtMessage
+            // label8
             // 
-            this.txtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtMessage.ForeColor = System.Drawing.Color.White;
-            this.txtMessage.Location = new System.Drawing.Point(0, 362);
-            this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(628, 20);
-            this.txtMessage.TabIndex = 1;
-            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(244, 75);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(186, 13);
+            this.label8.TabIndex = 49;
+            this.label8.Text = "Theme and colour settings here (WIP)";
             // 
-            // btnExit
+            // bkg_color_color
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(618, 4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(5, 6);
-            this.btnExit.TabIndex = 15;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.bkg_color_color.Controls.Add(this.gamelistbkg_color);
+            this.bkg_color_color.Location = new System.Drawing.Point(246, 98);
+            this.bkg_color_color.Name = "bkg_color_color";
+            this.bkg_color_color.Size = new System.Drawing.Size(14, 10);
+            this.bkg_color_color.TabIndex = 48;
             // 
-            // btnCloseTab
+            // gamelistbkg_color
             // 
-            this.btnCloseTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCloseTab.BackgroundImage")));
-            this.btnCloseTab.FlatAppearance.BorderSize = 0;
-            this.btnCloseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseTab.Location = new System.Drawing.Point(552, 4);
-            this.btnCloseTab.Name = "btnCloseTab";
-            this.btnCloseTab.Size = new System.Drawing.Size(5, 6);
-            this.btnCloseTab.TabIndex = 16;
-            this.btnCloseTab.UseVisualStyleBackColor = true;
-            this.btnCloseTab.Click += new System.EventHandler(this.btnCloseTab_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(274, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 47;
-            this.label7.Text = "border color";
+            this.gamelistbkg_color.Location = new System.Drawing.Point(0, 18);
+            this.gamelistbkg_color.Name = "gamelistbkg_color";
+            this.gamelistbkg_color.Size = new System.Drawing.Size(14, 10);
+            this.gamelistbkg_color.TabIndex = 32;
             // 
             // colordialog_border
             // 
@@ -337,6 +317,15 @@
             this.colordialog_border.Size = new System.Drawing.Size(26, 12);
             this.colordialog_border.TabIndex = 46;
             this.colordialog_border.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(274, 204);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 47;
+            this.label7.Text = "border color";
             // 
             // label6
             // 
@@ -452,20 +441,43 @@
             this.colordialog_bkg.TabIndex = 34;
             this.colordialog_bkg.TabStop = false;
             // 
-            // bkg_color_color
+            // txtMessage
             // 
-            this.bkg_color_color.Controls.Add(this.gamelistbkg_color);
-            this.bkg_color_color.Location = new System.Drawing.Point(303, 151);
-            this.bkg_color_color.Name = "bkg_color_color";
-            this.bkg_color_color.Size = new System.Drawing.Size(14, 10);
-            this.bkg_color_color.TabIndex = 48;
+            this.txtMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtMessage.ForeColor = System.Drawing.Color.White;
+            this.txtMessage.Location = new System.Drawing.Point(0, 362);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(628, 20);
+            this.txtMessage.TabIndex = 1;
+            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
             // 
-            // gamelistbkg_color
+            // btnExit
             // 
-            this.gamelistbkg_color.Location = new System.Drawing.Point(0, 18);
-            this.gamelistbkg_color.Name = "gamelistbkg_color";
-            this.gamelistbkg_color.Size = new System.Drawing.Size(14, 10);
-            this.gamelistbkg_color.TabIndex = 32;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Location = new System.Drawing.Point(618, 4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(5, 6);
+            this.btnExit.TabIndex = 15;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnCloseTab
+            // 
+            this.btnCloseTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCloseTab.BackgroundImage")));
+            this.btnCloseTab.FlatAppearance.BorderSize = 0;
+            this.btnCloseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseTab.Location = new System.Drawing.Point(4, 4);
+            this.btnCloseTab.Name = "btnCloseTab";
+            this.btnCloseTab.Size = new System.Drawing.Size(5, 6);
+            this.btnCloseTab.TabIndex = 16;
+            this.btnCloseTab.UseVisualStyleBackColor = true;
+            this.btnCloseTab.Click += new System.EventHandler(this.btnCloseTab_Click);
             // 
             // Chat
             // 
@@ -474,12 +486,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(628, 382);
             this.ControlBox = false;
-            this.Controls.Add(this.tabControlEX1);
             this.Controls.Add(this.btnCloseTab);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.shade);
             this.Controls.Add(this.resize);
             this.Controls.Add(this.txtMessage);
+            this.Controls.Add(this.tabControlEX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Chat";
             this.Text = "ArmageddonPro";
@@ -493,6 +505,7 @@
             this.panel1.PerformLayout();
             this.tabPageEX2.ResumeLayout(false);
             this.tabPageEX2.PerformLayout();
+            this.bkg_color_color.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_border)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_alternate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_item)).EndInit();
@@ -500,7 +513,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_highlight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_gamelist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colordialog_bkg)).EndInit();
-            this.bkg_color_color.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,7 +534,7 @@
         private System.Windows.Forms.PictureBox shade;
         private Dotnetrix.Controls.TabPageEX tabPageEX2;
         public System.Windows.Forms.TextBox txtLog;
-        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button showChanList;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnCloseTab;
         private System.Windows.Forms.PictureBox colordialog_border;
@@ -541,6 +553,7 @@
         private System.Windows.Forms.PictureBox colordialog_bkg;
         private System.Windows.Forms.Panel bkg_color_color;
         private System.Windows.Forms.Panel gamelistbkg_color;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -763,7 +763,10 @@ namespace ArmageddonPro
 
         private void btnCloseTab_Click(object sender, EventArgs e)
         {
-            tabControlEX1.TabPages.Remove(tabControlEX1.SelectedTab);
+            if (tabControlEX1.SelectedTab.Name != "tabPageEX1")
+            {
+                tabControlEX1.TabPages.Remove(tabControlEX1.SelectedTab);
+            }
         }
 
         private void splitmoved(object sender, SplitterEventArgs e)
@@ -880,9 +883,8 @@ namespace ArmageddonPro
             }
             else 
             {
-                frmChanlist.Show();
+                frmUserlist.Show();
                 frmGamelist.Show();
-                // form3.Show();
                 chathidden = 0;
             }
 
@@ -997,15 +999,6 @@ namespace ArmageddonPro
             tabControlEX1.SelectedTab.ForeColor = Color.White;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (frmUserlist.Visible == true)
-                { frmUserlist.Visible = false; }
-            else
-                { frmUserlist.Visible = true; }
-                
-        }
-
         public void showchat()
         {
             chathidden = 0;
@@ -1038,6 +1031,14 @@ namespace ArmageddonPro
             {
                 hidechat();
             }
+        }
+
+        private void showChanList_Click(object sender, EventArgs e)
+        {
+            if (frmChanlist.Visible == true)
+            { frmChanlist.Visible = false; }
+            else
+            { frmChanlist.Visible = true; }
         }
 
         /* ALTERNATIVE METHOD - chat screen flashes up before hiding so not as good as above

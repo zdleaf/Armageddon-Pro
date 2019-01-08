@@ -35,9 +35,9 @@
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.settings_panel = new System.Windows.Forms.Panel();
-            this.setGet_IP_Port = new System.Windows.Forms.CheckBox();
             this.setPort = new System.Windows.Forms.TextBox();
             this.setPath = new System.Windows.Forms.Button();
+            this.setGet_IP_Port = new System.Windows.Forms.CheckBox();
             this.setIP = new System.Windows.Forms.TextBox();
             this.hidechat = new System.Windows.Forms.CheckBox();
             this.alwaysontop = new System.Windows.Forms.CheckBox();
@@ -200,18 +200,6 @@
             this.settings_panel.TabIndex = 16;
             this.settings_panel.Visible = false;
             // 
-            // setGet_IP_Port
-            // 
-            this.setGet_IP_Port.AutoSize = true;
-            this.setGet_IP_Port.ForeColor = System.Drawing.Color.White;
-            this.setGet_IP_Port.Location = new System.Drawing.Point(9, 129);
-            this.setGet_IP_Port.Name = "setGet_IP_Port";
-            this.setGet_IP_Port.Size = new System.Drawing.Size(151, 17);
-            this.setGet_IP_Port.TabIndex = 39;
-            this.setGet_IP_Port.Text = "get IP and port from win.ini";
-            this.setGet_IP_Port.UseVisualStyleBackColor = true;
-            this.setGet_IP_Port.CheckedChanged += new System.EventHandler(this.setGet_IP_Port_checked);
-            // 
             // setPort
             // 
             this.setPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -235,6 +223,18 @@
             this.setPath.UseVisualStyleBackColor = true;
             this.setPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.setPathtoWinINI);
             // 
+            // setGet_IP_Port
+            // 
+            this.setGet_IP_Port.AutoSize = true;
+            this.setGet_IP_Port.ForeColor = System.Drawing.Color.White;
+            this.setGet_IP_Port.Location = new System.Drawing.Point(9, 129);
+            this.setGet_IP_Port.Name = "setGet_IP_Port";
+            this.setGet_IP_Port.Size = new System.Drawing.Size(151, 17);
+            this.setGet_IP_Port.TabIndex = 39;
+            this.setGet_IP_Port.Text = "get IP and port from win.ini";
+            this.setGet_IP_Port.UseVisualStyleBackColor = true;
+            this.setGet_IP_Port.CheckedChanged += new System.EventHandler(this.setGet_IP_Port_checked);
+            // 
             // setIP
             // 
             this.setIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -250,7 +250,7 @@
             // 
             this.hidechat.AutoSize = true;
             this.hidechat.ForeColor = System.Drawing.Color.White;
-            this.hidechat.Location = new System.Drawing.Point(9, 37);
+            this.hidechat.Location = new System.Drawing.Point(9, 45);
             this.hidechat.Name = "hidechat";
             this.hidechat.Size = new System.Drawing.Size(70, 17);
             this.hidechat.TabIndex = 36;
@@ -262,7 +262,7 @@
             // 
             this.alwaysontop.AutoSize = true;
             this.alwaysontop.ForeColor = System.Drawing.Color.White;
-            this.alwaysontop.Location = new System.Drawing.Point(9, 14);
+            this.alwaysontop.Location = new System.Drawing.Point(9, 22);
             this.alwaysontop.Name = "alwaysontop";
             this.alwaysontop.Size = new System.Drawing.Size(91, 17);
             this.alwaysontop.TabIndex = 35;
