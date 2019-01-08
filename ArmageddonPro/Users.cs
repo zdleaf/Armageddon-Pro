@@ -115,7 +115,7 @@ namespace ArmageddonPro
         {
             if (userlist.SelectedIndex != -1)
             {
-                user row = (user)userlist.SelectedObject;
+                User row = (User)userlist.SelectedObject;
                 Control ctrl = frmChat.tabexists(row.username.ToString());
                 if (ctrl == null)
                 {

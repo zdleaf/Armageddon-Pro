@@ -106,7 +106,7 @@ namespace ArmageddonPro
         // Join channel if double clicked
         private void channelList_doubleclick(object sender, EventArgs e)
         {
-            channel chan = (channel)channelList.SelectedObject;
+            Channel chan = (Channel)channelList.SelectedObject;
             Control ctrl = frmChat.tabexists(chan.channelName);
             if (ctrl == null)
             {

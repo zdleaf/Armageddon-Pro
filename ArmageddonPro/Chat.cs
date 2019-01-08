@@ -14,7 +14,6 @@ using System.Windows.Forms;
 namespace ArmageddonPro
 {
 
-
     public partial class Chat : Torbo.DockableForm
     {
         // Stop autoscroll in textbox when scrollbar is not at bottom
@@ -61,9 +60,7 @@ namespace ArmageddonPro
         private StreamWriter swSender;
         private StreamReader srReceiver;
         private TcpClient tcpServer;
-        // Needed to update the form with messages from another thread
         private delegate void UpdateLogCallback(string strMessage);
-        // Needed to set the form to a "disconnected" state from another thread
         private delegate void CloseConnectionCallback(string strReason);
         private Thread thrMessaging;
         private IPAddress ipAddr;
@@ -88,23 +85,22 @@ namespace ArmageddonPro
         private Games frmGamelist;
         private Channels frmChanlist;
 
+
+
         public Chat()
         {
-
-            // this.ShowInTaskbar = false;
 
             frmUserlist = new Users(this, users);
             frmChanlist = new Channels(this, channels);
             frmGamelist = new Games(this, frmUserlist, frmChanlist);
             
-
             ConnectForm(frmChanlist);
             ConnectForm(frmGamelist);
             ConnectForm(frmUserlist);
             frmGamelist.ConnectForm(frmChanlist);
             frmUserlist.ConnectForm(frmGamelist);
 
-            // On application exit, don't forget to disconnect first
+            // On application exit, disconnect first and save settings to registry
             Application.ApplicationExit += new EventHandler(OnApplicationExit);
             InitializeComponent();
 
@@ -113,7 +109,6 @@ namespace ArmageddonPro
             server.SelectedIndex = 0;
             comboChan.SelectedIndex = 0;
             tabPageEX1.Text = "connect";
-
 
         }
 
@@ -195,7 +190,7 @@ namespace ArmageddonPro
                     break;
             }
         }
-
+        // end window shade
 
         // The event handler for application exit
         public void OnApplicationExit(object sender, EventArgs e)
@@ -322,7 +317,6 @@ namespace ArmageddonPro
 
             }
             tabPageEX1.Text = hostname;
-            // Helps us track whether we're connected or not
             Connected = true;
             btnConnect.Text = "Disconnect";
             // Send the username/password to the server
@@ -332,7 +326,7 @@ namespace ArmageddonPro
             username = txtUser.Text;
             nick += username;
             swSender.WriteLine(nick);
-            swSender.WriteLine("USER Username * * :" + flags.SelectedIndex + " " + rank.SelectedIndex + " Zinc");
+            swSender.WriteLine("USER Username * * :" + flags.SelectedIndex + " " + rank.SelectedIndex + " ZincLdn");
 
             swSender.WriteLine("JOIN " + channel);
 
@@ -345,10 +339,10 @@ namespace ArmageddonPro
             thrMessaging = new Thread(new ThreadStart(ReceiveMessages));
             thrMessaging.Start();
         }
+
         private void ReceiveMessages()
         {
 
-            // Receive the response from the server
             srReceiver = new StreamReader(tcpServer.GetStream());
 
             /*
@@ -380,14 +374,13 @@ namespace ArmageddonPro
 
             while (Connected)
             {
-                // Show the messages in the log TextBox
                 try
                 {
                     this.Invoke(new UpdateLogCallback(this.UpdateLog), new object[] { srReceiver.ReadLine() });
                 }
                 catch (Exception e)
                 {
-                    // this.Invoke(new UpdateLogCallback(this.UpdateLog), new object[] { "Exception caught" +e});
+                    Console.WriteLine(e.ToString());
                 }
 
             }
@@ -416,7 +409,7 @@ namespace ArmageddonPro
                 }
                 else
                 {
-                    // Do a who on them, so the who handler can add them to list
+                    // Do a WHO on them, so the who handler can add them to list
                     swSender.WriteLine("WHO " + name);
                     swSender.Flush();
                     // Add join msg to correct chan
@@ -440,7 +433,7 @@ namespace ArmageddonPro
                 string tabname = currentchan; // This is set when we find a join request response
 
                 // Remove them from the userlist
-                foreach (user item in users)
+                foreach (User item in users)
                 {
                     if (item.username == quitname)
                     {
@@ -471,7 +464,7 @@ namespace ArmageddonPro
                 string tabname = currentchan;
 
                 // Remove them from the userlist
-                foreach (user item in users)
+                foreach (User item in users)
                 {
                     if (item.username == quitname)
                     {
@@ -492,7 +485,7 @@ namespace ArmageddonPro
 
             }
 
-            // if we get a private message
+            // PRIVMSG
             if (strMessage.IndexOf("PRIVMSG") != -1)
             {
                 int i4 = strMessage.IndexOf("!");
@@ -550,7 +543,7 @@ namespace ArmageddonPro
                 string[] whoarray = strMessage.Split(' ');
                 bool exists = false;
 
-                user user = new user();
+                User user = new User();
                 user.username = whoarray[7];
                 user.channel = whoarray[6];
 
@@ -565,7 +558,7 @@ namespace ArmageddonPro
                 {
                 }
 
-                foreach (user item in users)
+                foreach (User item in users)
                 {
                     if (item.username == whoarray[7])
                     { exists = true; }
@@ -601,7 +594,7 @@ namespace ArmageddonPro
             if (strMessage.IndexOf("322") != -1)
             {
                 string[] channellist = strMessage.Split(' ');
-                channel chan = new channel();
+                Channel chan = new Channel();
                 chan.channelName = channellist[3].Replace('�', ' ');
                 chan.channelUsercount = Int32.Parse(channellist[4]);
 
@@ -611,7 +604,7 @@ namespace ArmageddonPro
 
                 bool exists = false;
 
-                foreach (channel channel1 in channels)
+                foreach (Channel channel1 in channels)
                 {
                     if (channel1.channelName == chan.channelName)
                     {
@@ -641,7 +634,7 @@ namespace ArmageddonPro
             // tw.WriteLine(strMessage);
 
             // NICK IN USE
-            if (strMessage.IndexOf(" 433 ") != -1) // any 433 sets off, eg 'highest connection count 94338' needs to be more specific
+            if (strMessage.IndexOf(" 433 ") != -1)
             {
                 CloseConnection(); 
             }
@@ -657,7 +650,7 @@ namespace ArmageddonPro
 
         public void appendx(RichTextBox textbox, Color color, String text)
         {
-            textbox.SelectionStart = textbox.TextLength; // Move cursor to the END first!
+            textbox.SelectionStart = textbox.TextLength; // Move cursor to the END before appending
             textbox.SelectionColor = color;
             if (IsScrollBarAtBottom(textbox) == true)
             {
@@ -708,7 +701,6 @@ namespace ArmageddonPro
 
         private void SendMessage()
         {
-
             // form PRIVMSG DEST MSG string
 
             string tabname = tabControlEX1.SelectedTab.Name; // destination
@@ -721,13 +713,11 @@ namespace ArmageddonPro
                 prv.AppendText("\r\n [" + txtUser.Text + "] " + txtMessage.Text);
             }
 
-
             // Send raw command to server
             if (tabControlEX1.SelectedTab.Text == hostname)
             {
                 mesg = txtMessage.Text;
             }
-
 
             // Send to server
             if (txtMessage.Lines.Length >= 1)
@@ -743,15 +733,12 @@ namespace ArmageddonPro
         {
             txtLog.AppendText("\r\n Disconnected \r\n");
             btnConnect.Text = "Connect";
-            // Enable and disable the appropriate controls on the form
             server.Enabled = true;
             txtUser.Enabled = true;
-            // Close the objects
             Connected = false;
             swSender.Close();
             srReceiver.Close();
             tcpServer.Close();
-            // Clear userlist
             frmUserlist.userlist.SetObjects(null);
         }
 
@@ -1032,6 +1019,15 @@ namespace ArmageddonPro
                 hidechat();
             }
         }
+        
+        /* ALTERNATIVE METHOD - chat screen flashes up before hiding so not as good as above
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            if (chathidden == 1)
+            { this.Hide(); }
+        }
+        */
 
         private void showChanList_Click(object sender, EventArgs e)
         {
@@ -1041,17 +1037,10 @@ namespace ArmageddonPro
             { frmChanlist.Visible = true; }
         }
 
-        /* ALTERNATIVE METHOD - chat screen flashes up before hiding so not as good as above
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            if (chathidden == 1)
-            { this.Hide(); }
-        }
-        */
+
     }
 
-    class user
+    public class User
     {
         public int flag;
         public int rank;
@@ -1059,13 +1048,11 @@ namespace ArmageddonPro
         public string channel;
     }
 
-    class channel
+    public class Channel
     {
         public string channelName;
         public int channelUsercount;
         public string channelTopic;
     }
-
-
 
 }
