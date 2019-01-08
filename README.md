@@ -12,6 +12,7 @@ Armageddon Pro is an alternative online front end for the popular game Worms Arm
 
 Use the main Chat form to connect to Wormnet and show the Channel List
 ![Chat Form](http://www.zincldn.co.uk/images/ArmageddonPro/Connect.png)
+
 Press the ![Settings icon](http://www.zincldn.co.uk/images/ArmageddonPro/settings2.gif) icon on the Gamelist  to open the hosting settings, set always on top or hide the chat windows to just show the Gamelist
 ![Armageddon Pro](http://www.zincldn.co.uk/images/ArmageddonPro/Settings.png)
 
