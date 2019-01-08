@@ -175,8 +175,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.settings_panel);
             this.panel1.Controls.Add(this.host_panel);
+            this.panel1.Controls.Add(this.settings_panel);
             this.panel1.Controls.Add(this.gamelist);
             this.panel1.Location = new System.Drawing.Point(1, 14);
             this.panel1.Name = "panel1";
@@ -290,7 +290,7 @@
             // 
             this.hostgame_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hostgame_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.hostgame_btn.Location = new System.Drawing.Point(9, 74);
+            this.hostgame_btn.Location = new System.Drawing.Point(11, 70);
             this.hostgame_btn.Name = "hostgame_btn";
             this.hostgame_btn.Size = new System.Drawing.Size(40, 25);
             this.hostgame_btn.TabIndex = 13;
@@ -309,7 +309,7 @@
             "AnythingGoes",
             "PartyTime",
             "RopersHeaven"});
-            this.host_chan_dropdown.Location = new System.Drawing.Point(10, 47);
+            this.host_chan_dropdown.Location = new System.Drawing.Point(11, 43);
             this.host_chan_dropdown.Name = "host_chan_dropdown";
             this.host_chan_dropdown.Size = new System.Drawing.Size(104, 21);
             this.host_chan_dropdown.TabIndex = 1;
