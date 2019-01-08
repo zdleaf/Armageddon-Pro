@@ -67,6 +67,7 @@
             this.colorDialog5 = new System.Windows.Forms.ColorDialog();
             this.colorDialog6 = new System.Windows.Forms.ColorDialog();
             this.colorDialog7 = new System.Windows.Forms.ColorDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.settings_panel.SuspendLayout();
             this.host_panel.SuspendLayout();
@@ -221,7 +222,7 @@
             this.setPath.TabIndex = 19;
             this.setPath.Text = "Set path to win.ini";
             this.setPath.UseVisualStyleBackColor = true;
-            this.setPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.setPathtoWinINI);
+            this.setPath.Click += new System.EventHandler(this.setPath_Click);
             // 
             // setGet_IP_Port
             // 
@@ -522,6 +523,10 @@
             this.colorDialog7.AnyColor = true;
             this.colorDialog7.FullOpen = true;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Games
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,5 +603,6 @@
         public System.Windows.Forms.Button setPath;
         public System.Windows.Forms.CheckBox setGet_IP_Port;
         private System.Windows.Forms.TextBox setPort;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

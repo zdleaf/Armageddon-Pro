@@ -204,21 +204,6 @@ namespace ArmageddonPro
                     }
                 }
             }
-            /*
-            if (gamelist != null && gamelist.SelectedItem != null)
-            {
-                object select = gamelist.SelectedItem;
-                game selectgame = (game)select;
-                foreach (game game in games)
-                {
-                    if (selectgame.id == game.id)
-                    {
-                        select = game;
-                        set_selected_item(select);
-                    }
-                }
-            }
-             */
 
             gamelist.SetObjects(games);
 
@@ -800,13 +785,6 @@ namespace ArmageddonPro
 
             System.Diagnostics.Process.Start(hosturl);
 
-
-        }
-
-        // save path to win.ini in registry
-        private void setPathtoWinINI(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void setGet_IP_Port_checked(object sender, EventArgs e)
@@ -816,6 +794,18 @@ namespace ArmageddonPro
                 setIP.Text = readfile("LocalAddress=");
                 setPort.Text = readfile("HostingPort=");
             }
+        }
+
+        // save path to win.ini in registry
+        private void setPath_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\zincldn", true);
+                key.SetValue("path", openFileDialog1.FileName);
+            }
+
         }
     }
 
