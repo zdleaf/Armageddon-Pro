@@ -364,8 +364,9 @@ namespace ArmageddonPro
             item1.AutoSize = false;
             item1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             item1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            item1.Size = new System.Drawing.Size(107, 18);
-            item1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            item1.Size = new System.Drawing.Size(107, 22);
+            //item1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            //item1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             item1.Text = "join";
 
 
@@ -373,7 +374,7 @@ namespace ArmageddonPro
             item2.AutoSize = false;
             item2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             item2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            item2.Size = new System.Drawing.Size(107, 18);
+            item2.Size = new System.Drawing.Size(107, 22);
             item2.Text = "copy url";
 
             ToolStripSeparator sep1 = new ToolStripSeparator();
@@ -382,7 +383,7 @@ namespace ArmageddonPro
             refresh1.AutoSize = false;
             refresh1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             refresh1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            refresh1.Size = new System.Drawing.Size(107, 18);
+            refresh1.Size = new System.Drawing.Size(107, 22);
             refresh1.Text = "refresh";
 
             ToolStripSeparator sep2 = new ToolStripSeparator();
@@ -391,9 +392,7 @@ namespace ArmageddonPro
             host1.AutoSize = false;
             host1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             host1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            host1.Size = new System.Drawing.Size(107, 18);
-            //host1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            //host1.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            host1.Size = new System.Drawing.Size(107, 22);
             host1.Text = "host";
 
             ToolStripSeparator sep4 = new ToolStripSeparator();
