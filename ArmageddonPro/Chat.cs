@@ -486,52 +486,42 @@ namespace ArmageddonPro
             }
 
             // PRIVMSG
+            // :zincldn!zincldn@127.0.0.1 PRIVMSG #Help :chan
+            // :zincldn!zincldn@127.0.0.1 PRIVMSG hi :private
+
             if (strMessage.IndexOf("PRIVMSG") != -1)
             {
+                // name is between the first colon and a "!"
                 int i4 = strMessage.IndexOf("!");
-                string name2 = strMessage.Substring(1, i4 - 1);
+                string username = strMessage.Substring(1, i4 - 1);
 
+                // message comes after the second ":"
                 int i5 = strMessage.IndexOf(":", 1);
-                string msg = strMessage.Substring(i5 + 1);
+                string message = strMessage.Substring(i5 + 1);
 
                 string[] split = strMessage.Split(' ');
 
-                RichTextBox prv = new RichTextBox();
-                if (split[2].Contains('#')) { prv = textbox_exists(split[2]); } // IF PRV MESSAGE IS INTENDED FOR A CHANNEL
-                else { prv = textbox_exists(name2); }
+                // check whether there is already a TextBox for the #channel or username
+                RichTextBox privateMsgBox = new RichTextBox();
+                if (split[2].Contains('#')) { privateMsgBox = textboxExists(split[2]); } 
+                else { privateMsgBox = textboxExists(username); }
 
-                // :zincldn!zincldn@127.0.0.1 PRIVMSG #Help :chan
-                // :zincldn!zincldn@127.0.0.1 PRIVMSG hi :private
-
-                // Find the textbox (tb+name) that corresponds to the destination (either #chan or user)
-                // If tab exists, append to it. Else make a new tab.
-
-                // If tab exists
-                if (prv != null)
+                // if textbox exists, append to it, otherwise make a new tab.
+                if (privateMsgBox != null)
                 {
-                    TabPage tab = (TabPage)prv.Parent;
+                    TabPage tab = (TabPage)privateMsgBox.Parent;
+                    // highlight the tab name in Red to signify a new message
                     if (tabControlEX1.SelectedTab != tab)
                     {
                         tab.ForeColor = Color.Red;
                     }
                     tabControlEX1.Refresh();
-                    // Formatting and indentation
-                    string tabs;
-                    if (name2.Length >= 7)
-                    {
-                        tabs = "\t";
-                    }
-                    else
-                    {
-                        tabs = "\t\t";
-                    }
-                    string msgtext = "\r\n[ " + name2 + " ]" + tabs + msg;
-                    appendx(prv, Color.White, msgtext);
+                    string msgText = "\r\n[ " + username + " ] " + message;
+                    appendx(privateMsgBox, Color.White, msgText);
                 }
-                // Else make a new tab with the message
                 else
                 {
-                    newtab(name2, "\r\n [" + name2 + "] " + msg, false, true);
+                    newtab(username, "\r\n [" + username + "] " + message, false, true);
                 }
             }
             // If it's a NAMEs reply
@@ -674,7 +664,7 @@ namespace ArmageddonPro
             else return null; // Else return null
         }
 
-        public RichTextBox textbox_exists(string textbox_name)
+        public RichTextBox textboxExists(string textbox_name)
         {
             Control[] ctrl2 = new Control[1];
             ctrl2 = this.Controls.Find("tb" + textbox_name, true);
