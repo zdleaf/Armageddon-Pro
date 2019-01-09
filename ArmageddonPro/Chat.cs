@@ -524,10 +524,11 @@ namespace ArmageddonPro
                     newtab(username, "\r\n [" + username + "] " + message, false, true);
                 }
             }
-            // If it's a NAMEs reply
-            // :localhost 352 zincldn #Help `zincldn 127.0.0.1 localhost `zincldn H :0 0[flag] 0[rank] :UK ProSnooper
-            // :wormnet1.team17.com 352 zincldn #Help ~WebSnoop no.address.for.you wormnet1.team17.com WebSnoop H :0 0 4294967309 UK http://snoop.worms2d.info/
-            // :wormnet1.team17.com 352 zincldn #AnythingGoes Username no.address.for.you wormnet1.team17.com Figaro H :0 44 0 UK ProSnooper2
+            // If it's a WHO reply
+            // :localhost 352 zincldn #Help `zincldn 127.0.0.1 localhost `zincldn H :0 0[flag] 0[rank] :UK Snooper
+            // :wormnet1.team17.com 352 zincldn #Help ~WebSnoop no.address.for.you wormnet1.team17.com WebSnoop H :0 0 4294967309 UK
+            // :wormnet1.team17.com 352 zincldn #AnythingGoes Username no.address.for.you wormnet1.team17.com Figaro H :0 44 0 UK Snooper
+
             if (strMessage.IndexOf("352") != -1)
             {
                 string[] whoarray = strMessage.Split(' ');
@@ -535,17 +536,27 @@ namespace ArmageddonPro
 
                 User user = new User();
                 user.username = whoarray[7];
-                user.channel = whoarray[6];
+                user.channel = whoarray[3];
 
                 int i5 = strMessage.IndexOf(":", 1);
-                // Error checking for invalid or malformed rank/flag information.. is int? if not display ??? and ? rank and flags
-                try
+                string userInfoString = strMessage.Substring(i5 + 1);
+                string[] userInfoArray = userInfoString.Split(' ');
+
+                // Set the flag/rank with TryParse, then check if the info is within bounds, if not set as ?
+                if (int.TryParse(userInfoArray[1], out user.flag) != false)
                 {
-                    user.flag = int.Parse(strMessage.Substring(i5 + 3, 2));
-                    user.rank = int.Parse(strMessage.Substring(i5 + 5, 2));
+                    if (user.flag > 64)
+                    {
+                        user.flag = 49;
+                    }
                 }
-                catch
+
+                if (int.TryParse(userInfoArray[2], out user.rank) != false)
                 {
+                    if (user.rank >= 13)
+                    {
+                        user.rank = 12;
+                    }
                 }
 
                 foreach (User item in users)
