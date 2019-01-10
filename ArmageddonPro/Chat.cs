@@ -326,11 +326,11 @@ namespace ArmageddonPro
             username = txtUser.Text;
             nick += username;
             swSender.WriteLine(nick);
-            swSender.WriteLine("USER Username * * :" + flags.SelectedIndex + " " + rank.SelectedIndex + " ZincLdn");
+            swSender.WriteLine("USER Username * * :" + flags.SelectedIndex + " " + rank.SelectedIndex + " Armageddon Pro");
 
             swSender.WriteLine("JOIN " + channel);
 
-            swSender.WriteLine("WHO");
+            swSender.WriteLine("WHO " + channel);
             swSender.WriteLine("LIST");
 
             swSender.Flush();
@@ -550,6 +550,10 @@ namespace ArmageddonPro
                         user.flag = 49;
                     }
                 }
+                else
+                {
+                    user.flag = 49;
+                }
 
                 if (int.TryParse(userInfoArray[2], out user.rank) != false)
                 {
@@ -557,6 +561,9 @@ namespace ArmageddonPro
                     {
                         user.rank = 12;
                     }
+                } else
+                {
+                    user.rank = 12;
                 }
 
                 foreach (User item in users)
