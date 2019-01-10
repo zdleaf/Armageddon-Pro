@@ -468,7 +468,6 @@
             // 
             // btnCloseTab
             // 
-            this.btnCloseTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCloseTab.BackgroundImage")));
             this.btnCloseTab.FlatAppearance.BorderSize = 0;
             this.btnCloseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -390,17 +390,21 @@ namespace ArmageddonPro
 
         private void UpdateLog(string strMessage)
         {
+            // PING :wormnet1.team17.com
+            // Respond to PINGs to keep connection alive
+            if (strMessage.IndexOf("PING") != -1)
+            {
+                string pingSuffix = strMessage.Substring(strMessage.IndexOf(":"));
+                swSender.WriteLine("PONG " + pingSuffix);
+                swSender.Flush();
+            }
 
             // JOIN
             if (strMessage.IndexOf("JOIN") != -1)
             {
-                int i;
-                i = strMessage.LastIndexOf(":");
-                currentchan = strMessage.Substring(i + 1);
+                currentchan = strMessage.Substring(strMessage.LastIndexOf(":") + 1);
 
-                int i3;
-                i3 = strMessage.IndexOf("!");
-                string name = strMessage.Substring(1, i3 - 1);
+                string name = strMessage.Substring(1,strMessage.IndexOf("!") - 1);
 
                 // If channel comes up with no tab, create that tab
                 if (!tabControlEX1.TabPages.ContainsKey(currentchan))
@@ -427,8 +431,7 @@ namespace ArmageddonPro
             //[14:07:46] :`zincldn!`zincldn@127.0.0.1 PART :#Help
             if (strMessage.IndexOf("PART") != -1)
             {
-                int i5 = strMessage.IndexOf("!");
-                string quitname = strMessage.Substring(1, i5 - 1);
+                string quitname = strMessage.Substring(1, strMessage.IndexOf("!") - 1);
 
                 string tabname = currentchan; // This is set when we find a join request response
 
@@ -542,7 +545,7 @@ namespace ArmageddonPro
                 string userInfoString = strMessage.Substring(i5 + 1);
                 string[] userInfoArray = userInfoString.Split(' ');
 
-                // Set the flag/rank with TryParse, then check if the info is within bounds, if not set as ?
+                // Set the flag/rank with TryParse, then check if the info is within bounds, if not set as ? or ???
                 if (int.TryParse(userInfoArray[1], out user.flag) != false)
                 {
                     if (user.flag > 64)
@@ -587,10 +590,8 @@ namespace ArmageddonPro
             }
 
             // If channel does not exist or was not specified
-
             if (strMessage.IndexOf("403") != -1)
             {
-                // Send LIST
                 swSender.WriteLine("LIST");
                 swSender.Flush();
                 // Get channels from 322 reply
