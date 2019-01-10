@@ -387,7 +387,6 @@ namespace ArmageddonPro
 
         }
 
-
         private void UpdateLog(string strMessage)
         {
             // PING :wormnet1.team17.com
@@ -458,11 +457,8 @@ namespace ArmageddonPro
 
             if (strMessage.IndexOf("QUIT") != -1)
             {
-                int i5 = strMessage.IndexOf("!");
-                string quitname = strMessage.Substring(1, i5 - 1);
-
-                int i6 = strMessage.LastIndexOf(":");
-                string quitmsg = strMessage.Substring(i6 + 1);
+                string quitname = strMessage.Substring(1, strMessage.IndexOf("!") - 1);
+                string quitmsg = strMessage.Substring(strMessage.LastIndexOf(":") + 1);
 
                 string tabname = currentchan;
 
@@ -495,12 +491,10 @@ namespace ArmageddonPro
             if (strMessage.IndexOf("PRIVMSG") != -1)
             {
                 // name is between the first colon and a "!"
-                int i4 = strMessage.IndexOf("!");
-                string username = strMessage.Substring(1, i4 - 1);
+                string username = strMessage.Substring(1, strMessage.IndexOf("!") - 1);
 
                 // message comes after the second ":"
-                int i5 = strMessage.IndexOf(":", 1);
-                string message = strMessage.Substring(i5 + 1);
+                string message = strMessage.Substring(strMessage.IndexOf(":", 1) + 1);
 
                 string[] split = strMessage.Split(' ');
 
@@ -541,8 +535,7 @@ namespace ArmageddonPro
                 user.username = whoarray[7];
                 user.channel = whoarray[3];
 
-                int i5 = strMessage.IndexOf(":", 1);
-                string userInfoString = strMessage.Substring(i5 + 1);
+                string userInfoString = strMessage.Substring(strMessage.IndexOf(":", 1) + 1);
                 string[] userInfoArray = userInfoString.Split(' ');
 
                 // Set the flag/rank with TryParse, then check if the info is within bounds, if not set as ? or ???
@@ -632,7 +625,6 @@ namespace ArmageddonPro
                     chan.channelUsercount = Int32.Parse(channellist[4]);
                     frmChanlist.channelList.RefreshObject(chan);
                 }
-
 
             }
 
