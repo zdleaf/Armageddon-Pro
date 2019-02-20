@@ -38,7 +38,7 @@ namespace ArmageddonPro
         {
             if (frmChat.Connected != false && this.Visible == true)
             {
-                frmChat.rawsend("LIST");
+                frmChat.RawSend("LIST");
             }
         }
 
@@ -111,11 +111,11 @@ namespace ArmageddonPro
             if (ctrl == null)
             {
                 frmChat.newtab(chan.channelName, "", false, false);
-                frmChat.rawsend("JOIN " + chan.channelName);
+                frmChat.RawSend("JOIN " + chan.channelName);
             }
             else
             {
-                frmChat.focustab(ctrl);
+                frmChat.FocusTab(ctrl);
             }
             
         }

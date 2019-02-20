@@ -635,11 +635,11 @@ namespace ArmageddonPro
         {
             if (hidechat.Checked == true)
             {
-                frmChat.hidechat();
+                frmChat.HideChat();
             }
             else
             {
-                frmChat.showchat();
+                frmChat.ShowChat();
             }
         }
 

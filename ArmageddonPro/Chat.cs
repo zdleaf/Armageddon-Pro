@@ -262,42 +262,11 @@ namespace ArmageddonPro
 
         private void InitializeConnection()
         {
-
             // Open new Tab, and connect() within this new tab
 
             // Parse the IP address from the TextBox into an IPAddress object
             IPAddress[] ips = Dns.GetHostAddresses(hostname);
             ipAddr = ips[0];
-            
-            /*
-            try
-            {
-                ipAddr = IPAddress.Parse(ip);
-
-            }
-            catch (ArgumentNullException e)
-            {
-                MessageBox.Show("SERVER IS NULL",
-                e.ToString(),
-                MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Information);
-                tcpServer.Close();
-                return;
-            }
-
-            catch (FormatException e)
-            {
-                MessageBox.Show("IP OR SERVER NOT VALID",
-                e.ToString(),
-                MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Information);
-                tcpServer.Close();
-                return;
-            }
-            */
-            //            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //            newtab("newconnect", "newmsg", false, false);
-            //            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             // Start a new TCP connection to the chat server
             tcpServer = new TcpClient();
@@ -345,31 +314,6 @@ namespace ArmageddonPro
 
             srReceiver = new StreamReader(tcpServer.GetStream());
 
-            /*
-            // If the first character of the response is 1, connection was successful
-            
-            string ConResponse = srReceiver.ReadLine();
-            // If the first character is a 1, connection was successful
-            if (ConResponse[0] != null)
-            {
-                if (ConResponse[0] == '1')
-                {
-                    // Update the form to tell it we are now connected
-                    this.Invoke(new UpdateLogCallback(this.UpdateLog), new object[] { "Connected Successfully!" });
-                }
-            }
-            else // If the first character is not a 1 (probably a 0), the connection was unsuccessful
-            {
-                string Reason = "Not Connected: ";
-                // Extract the reason out of the response message. The reason starts at the 3rd character
-                Reason += ConResponse.Substring(2, ConResponse.Length - 2);
-                // Update the form with the reason why we couldn't connect
-                this.Invoke(new CloseConnectionCallback(this.CloseConnection), new object[] { Reason });
-                // Exit the method
-                return;
-            }
-            */
-
             // While we are successfully connected, read incoming lines from the server
 
             while (Connected)
@@ -389,6 +333,7 @@ namespace ArmageddonPro
 
         private void UpdateLog(string strMessage)
         {
+
             // PING :wormnet1.team17.com
             // Respond to PINGs to keep connection alive
             if (strMessage.IndexOf("PING") != -1)
@@ -421,11 +366,12 @@ namespace ArmageddonPro
                     {
                         RichTextBox prv = (RichTextBox)ctrl[0];
                         string joinstring = "\r\n [ " + name + " joined ]";
-                        appendx(prv, Color.FromArgb(44, 44, 44), joinstring);
+                        AppendToTextbox(prv, Color.FromArgb(44, 44, 44), joinstring);
                     }
                 }
 
             }
+
             // PART/QUIT
             //[14:07:46] :`zincldn!`zincldn@127.0.0.1 PART :#Help
             if (strMessage.IndexOf("PART") != -1)
@@ -451,7 +397,7 @@ namespace ArmageddonPro
                 {
                     RichTextBox prv = (RichTextBox)ctrl[0];
                     string partstring = "\r\n [ " + quitname + " left channel ]";
-                    appendx(prv, Color.FromArgb(44, 44, 44), partstring);
+                    AppendToTextbox(prv, Color.FromArgb(44, 44, 44), partstring);
                 }
             }
 
@@ -479,7 +425,7 @@ namespace ArmageddonPro
                 {
                     RichTextBox prv = (RichTextBox)ctrl[0];
                     string quitstring = "\r\n [ " + quitname + " quit: " + quitmsg + " ]";
-                    appendx(prv, Color.FromArgb(44, 44, 44), quitstring);
+                    AppendToTextbox(prv, Color.FromArgb(44, 44, 44), quitstring);
                 }
 
             }
@@ -487,7 +433,6 @@ namespace ArmageddonPro
             // PRIVMSG
             // :zincldn!zincldn@127.0.0.1 PRIVMSG #Help :chan
             // :zincldn!zincldn@127.0.0.1 PRIVMSG hi :private
-
             if (strMessage.IndexOf("PRIVMSG") != -1)
             {
                 // name is between the first colon and a "!"
@@ -500,8 +445,8 @@ namespace ArmageddonPro
 
                 // check whether there is already a TextBox for the #channel or username
                 RichTextBox privateMsgBox = new RichTextBox();
-                if (split[2].Contains('#')) { privateMsgBox = textboxExists(split[2]); } 
-                else { privateMsgBox = textboxExists(username); }
+                if (split[2].Contains('#')) { privateMsgBox = TextboxExists(split[2]); } 
+                else { privateMsgBox = TextboxExists(username); }
 
                 // if textbox exists, append to it, otherwise make a new tab.
                 if (privateMsgBox != null)
@@ -514,18 +459,18 @@ namespace ArmageddonPro
                     }
                     tabControlEX1.Refresh();
                     string msgText = "\r\n[ " + username + " ] " + message;
-                    appendx(privateMsgBox, Color.White, msgText);
+                    AppendToTextbox(privateMsgBox, Color.White, msgText);
                 }
                 else
                 {
                     newtab(username, "\r\n [" + username + "] " + message, false, true);
                 }
             }
+
             // If it's a WHO reply
             // :localhost 352 zincldn #Help `zincldn 127.0.0.1 localhost `zincldn H :0 0[flag] 0[rank] :UK Snooper
             // :wormnet1.team17.com 352 zincldn #Help ~WebSnoop no.address.for.you wormnet1.team17.com WebSnoop H :0 0 4294967309 UK
             // :wormnet1.team17.com 352 zincldn #AnythingGoes Username no.address.for.you wormnet1.team17.com Figaro H :0 44 0 UK Snooper
-
             if (strMessage.IndexOf("352") != -1)
             {
                 string[] whoarray = strMessage.Split(' ');
@@ -631,25 +576,21 @@ namespace ArmageddonPro
             // Append text also scrolls the TextBox to the bottom each time
             txtLog.AppendText(strMessage + "\r\n");
 
-            // text file for error logging
-            // tw.WriteLine(strMessage);
-
             // NICK IN USE
             if (strMessage.IndexOf(" 433 ") != -1)
             {
                 CloseConnection(); 
             }
 
-
         }
 
-        public void rawsend(string data)
+        public void RawSend(string data)
         {
             swSender.WriteLine(data);
             swSender.Flush();
         }
 
-        public void appendx(RichTextBox textbox, Color color, String text)
+        public void AppendToTextbox(RichTextBox textbox, Color color, String text)
         {
             textbox.SelectionStart = textbox.TextLength; // Move cursor to the END before appending
             textbox.SelectionColor = color;
@@ -675,7 +616,7 @@ namespace ArmageddonPro
             else return null; // Else return null
         }
 
-        public RichTextBox textboxExists(string textbox_name)
+        public RichTextBox TextboxExists(string textbox_name)
         {
             Control[] ctrl2 = new Control[1];
             ctrl2 = this.Controls.Find("tb" + textbox_name, true);
@@ -686,7 +627,7 @@ namespace ArmageddonPro
             else return null; // Else return null
         }
 
-        public void focustab(Control tab)
+        public void FocusTab(Control tab)
         {
             tabControlEX1.SelectedTab = (TabPage)tab;
         }
@@ -987,7 +928,7 @@ namespace ArmageddonPro
             tabControlEX1.SelectedTab.ForeColor = Color.White;
         }
 
-        public void showchat()
+        public void ShowChat()
         {
             chathidden = 0;
             this.Show();
@@ -1000,7 +941,7 @@ namespace ArmageddonPro
             frmGamelist.ShowInTaskbar = false;
         }
 
-        public void hidechat()
+        public void HideChat()
         {
             chathidden = 1;
             frmGamelist.Show();
@@ -1017,7 +958,7 @@ namespace ArmageddonPro
             base.OnVisibleChanged(e);
             if (chathidden == 1)
             {
-                hidechat();
+                HideChat();
             }
         }
         

@@ -123,7 +123,7 @@ namespace ArmageddonPro
                 }
                 else
                 {
-                    frmChat.focustab(ctrl);
+                    frmChat.FocusTab(ctrl);
                 }
 
             }
