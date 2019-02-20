@@ -112,14 +112,14 @@ namespace ArmageddonPro
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            updategamelist();
+            UpdateGameList();
         }
 
         private void get_wormnat_port()
         {
         }
 
-        public void updategamelist()
+        public void UpdateGameList()
         {
             ArrayList games = new ArrayList();
             foreach (string channel in chanlist)
@@ -245,7 +245,7 @@ namespace ArmageddonPro
             }
         }
 
-        public string readfile(string search)
+        public string ReadFile(string search)
         {
             StringBuilder newFile = new StringBuilder();
             string result = String.Empty;
@@ -295,7 +295,7 @@ namespace ArmageddonPro
 
         private void refresh_Click(object sender, EventArgs e)
         {
-            updategamelist();
+            UpdateGameList();
 
             if (gamelist.Visible == false)
             {
@@ -448,7 +448,7 @@ namespace ArmageddonPro
 
         private void contextrefreshClick(object sender, EventArgs e)
         {
-            updategamelist();
+            UpdateGameList();
         }
 
         private void contextcopyClick(object sender, EventArgs e)
@@ -703,8 +703,6 @@ namespace ArmageddonPro
             // Using HttpClient or HttpWebRequest does not allow for receiving of custom headers (all headers are validated/filtered as per the RFC)
             // We therefore need to get the raw http data and extract SetGameId from this with RegExp
 
-            // ---HOST GAME HERE---
-            // NEW PAGE (LIKE SETTINGS) ASKING FOR GAME NAME + CHANNEL TO HOST IN
             // HTTP GET HOST WITH RESPONSE (GAMEID)
             // GET SCHEME FOR CHANNEL
             // START WA.EXE WITH CORRECT PARAMS (gameID + scheme)
@@ -790,8 +788,8 @@ namespace ArmageddonPro
         {
             if (setGet_IP_Port.Checked == true)
             {
-                setIP.Text = readfile("LocalAddress=");
-                setPort.Text = readfile("HostingPort=");
+                setIP.Text = ReadFile("LocalAddress=");
+                setPort.Text = ReadFile("HostingPort=");
             }
         }
 
