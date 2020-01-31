@@ -2,7 +2,7 @@
 
 Armageddon Pro is an alternative online front end for the popular game Worms Armageddon by Team 17. It allows you to chat, join and host games from the desktop rather than using the full screen game client.
 
-![Armageddon Pro](http://www.zincldn.co.uk/images/ArmageddonPro/Main3.png)
+![Armageddon Pro](http://www.zinc.london/images/ArmageddonPro/Main3.png)
  - Full chat support, including private messages
  - Join and host online games without leaving the desktop
  - Saves your settings, window sizes and positions to the registry
@@ -12,12 +12,12 @@ Armageddon Pro is an alternative online front end for the popular game Worms Arm
 
 Use the main Chat form to connect to Wormnet and show the Channel List
 
-![Chat Form](http://www.zincldn.co.uk/images/ArmageddonPro/Connect.png)
+![Chat Form](http://www.zinc.london/images/ArmageddonPro/Connect.png)
 
-Press the ![Settings icon](http://www.zincldn.co.uk/images/ArmageddonPro/settings2.gif) icon on the Gamelist  to open the hosting settings, set always on top or hide the chat windows to just show the Gamelist
+Press the ![Settings icon](http://www.zinc.london/images/ArmageddonPro/settings2.gif) icon on the Gamelist  to open the hosting settings, set always on top or hide the chat windows to just show the Gamelist
 
-![Settings](http://www.zincldn.co.uk/images/ArmageddonPro/Settings.png)
+![Settings](http://www.zinc.london/images/ArmageddonPro/Settings.png)
 
-Press the ![Host icon](http://www.zincldn.co.uk/images/ArmageddonPro/host2.gif) icon to host a new game to Wormnet, or the ![Refresh icon](http://www.zincldn.co.uk/images/ArmageddonPro/refresh3.gif) icon to refresh the Game list.
+Press the ![Host icon](http://www.zinc.london/images/ArmageddonPro/host2.gif) icon to host a new game to Wormnet, or the ![Refresh icon](http://www.zinc.london/images/ArmageddonPro/refresh3.gif) icon to refresh the Game list.
 
 Users can be private messaged and games can be joined by double clicking on them.
